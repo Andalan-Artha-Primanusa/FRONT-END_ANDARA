@@ -1,0 +1,165 @@
+/* ========================================
+   GLOBAL PAGE HEADER (PAGE HERO)
+   Single unified design system for ALL page headers.
+   Teal gradient, 24px radius, 32px padding, Poppins.
+   ====================================== */
+
+.page-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5, 20px);
+  padding: var(--space-8, 32px);
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--hero-bg-start, #0A7A3E), var(--hero-bg-end, #075B2C));
+  box-shadow: 0 14px 30px rgba(10, 122, 62, 0.18);
+  overflow: hidden;
+  color: var(--color-white, #fff);
+}
+
+.page-hero-glow {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -5%;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.page-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+  min-width: 240px;
+}
+
+.page-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-white, #fff);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.page-hero-title {
+  margin: 0;
+  font-family: var(--font-family-heading, 'Poppins', sans-serif);
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  color: var(--color-white, #fff);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.page-hero-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 66ch;
+  line-height: 1.5;
+}
+
+.page-hero-scope {
+  margin-top: 0.4rem;
+}
+
+.page-hero-scope .company-scope-badge {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.page-hero-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.page-hero-children {
+  position: relative;
+  z-index: 1;
+}
+
+/* Solid white action buttons on the teal hero.
+   Scoped so danger/warning buttons keep their colors. */
+.page-hero-actions .ui-button--primary,
+.page-hero-actions .ui-button--secondary,
+.page-hero-actions button.btn-primary,
+.page-hero-actions button.btn-outline,
+.page-hero-actions button[type='submit'] {
+  background: var(--color-white, #fff);
+  border-color: transparent;
+  color: var(--hero-bg-end, #075B2C);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.page-hero-actions .ui-button--primary svg,
+.page-hero-actions .ui-button--secondary svg,
+.page-hero-actions button.btn-primary svg,
+.page-hero-actions button.btn-outline svg,
+.page-hero-actions button[type='submit'] svg {
+  color: var(--hero-bg-end, #075B2C);
+}
+
+.page-hero-actions .ui-button--primary:hover:not(:disabled),
+.page-hero-actions .ui-button--secondary:hover:not(:disabled),
+.page-hero-actions button.btn-primary:hover:not(:disabled),
+.page-hero-actions button.btn-outline:hover:not(:disabled),
+.page-hero-actions button[type='submit']:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--hero-bg-end, #075B2C);
+}
+
+.page-hero-actions .ui-button--primary:disabled,
+.page-hero-actions .ui-button--secondary:disabled,
+.page-hero-actions button[type='submit']:disabled {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--hero-bg-end, #075B2C);
+}
+
+@media (max-width: 1024px) {
+  .page-hero {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-hero-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .page-hero-actions button {
+    flex: 1;
+  }
+}

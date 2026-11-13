@@ -1,0 +1,496 @@
+/* ============================================
+   PROFESSIONAL CHARTS & GRAPHICS STYLING
+   Beautiful Data Visualization - Blue & White
+   ============================================ */
+
+:root {
+  --chart-primary: #0A7A3E;
+  --chart-secondary: #10b981;
+  --chart-tertiary: #f59e0b;
+  --chart-danger: #ef4444;
+  --chart-info: #06b6d4;
+  --chart-purple: #8b5cf6;
+  --chart-pink: #ec4899;
+  --chart-bg: #ffffff;
+  --chart-bg-light: #f8faff;
+  --chart-text: #075B2C;
+  --chart-text-light: #0A7A3E;
+  --chart-border: rgba(10, 122, 62, 0.15);
+}
+
+/* ============================================
+   CHART CONTAINER
+   ============================================ */
+
+.chart-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--chart-bg);
+  border: 1px solid var(--chart-border);
+  box-shadow: 0 4px 12px rgba(10, 122, 62, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.chart-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(10, 122, 62, 0.1) 0%, transparent 70%);
+  transform: translate(30%, -30%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.chart-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(10, 122, 62, 0.15);
+  border-color: var(--color-primary-light);
+}
+
+.chart-card.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ============================================
+   CHART HEADER & TITLE
+   ============================================ */
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.chart-title {
+  font-size: 1.125rem;
+  color: var(--chart-text);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chart-title::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--chart-primary);
+  box-shadow: 0 0 0 6px rgba(10, 122, 62, 0.1);
+}
+
+.chart-subtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0.5rem 0 0;
+  font-weight: 400;
+}
+
+.chart-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.chart-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.chart-stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.chart-stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--chart-primary);
+}
+
+/* ============================================
+   RECHARTS CUSTOMIZATION
+   ============================================ */
+
+.recharts-surface {
+  overflow: visible !important;
+}
+
+.recharts-cartesian-axis-tick text {
+  fill: #64748b;
+  font-size: 12px;
+}
+
+.recharts-cartesian-axis line {
+  stroke: rgba(10, 122, 62, 0.1);
+}
+
+.recharts-cartesian-grid line {
+  stroke: rgba(10, 122, 62, 0.08);
+  stroke-dasharray: 4px 4px;
+}
+
+.recharts-legend-wrapper {
+  padding-top: 1rem !important;
+}
+
+.recharts-legend-item {
+  color: #64748b !important;
+  font-size: 13px !important;
+}
+
+.recharts-tooltip {
+  outline: none !important;
+}
+
+.recharts-default-tooltip {
+  background: var(--chart-bg) !important;
+  border: 1px solid var(--chart-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+.recharts-tooltip-label {
+  color: var(--chart-text) !important;
+  font-weight: 600 !important;
+}
+
+.recharts-tooltip-item {
+  color: var(--chart-text-light) !important;
+}
+
+/* ============================================
+   CHARTS GRID LAYOUT
+   ============================================ */
+
+.charts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+  gap: 1.5rem;
+}
+
+.charts-grid-2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.charts-grid-3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.charts-grid-4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ============================================
+   KPI / METRICS CARDS
+   ============================================ */
+
+.metric-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--chart-bg);
+  border: 1px solid var(--chart-border);
+  box-shadow: 0 4px 12px rgba(10, 122, 62, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -20px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(10, 122, 62, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(10, 122, 62, 0.15);
+  border-color: var(--color-primary-light);
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.metric-icon {
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+.metric-value {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--chart-primary);
+  letter-spacing: -1px;
+  position: relative;
+  z-index: 1;
+}
+
+.metric-change {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.metric-change.positive {
+  color: var(--chart-secondary);
+}
+
+.metric-change.negative {
+  color: var(--chart-danger);
+}
+
+.metric-change.neutral {
+  color: #94a3b8;
+}
+
+.metric-change-icon {
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   DATA VISUALIZATION ELEMENTS
+   ============================================ */
+
+.chart-legend {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--chart-border);
+  position: relative;
+  z-index: 1;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legend-color.primary {
+  background: var(--chart-primary);
+}
+
+.legend-color.secondary {
+  background: var(--chart-secondary);
+}
+
+.legend-color.tertiary {
+  background: var(--chart-tertiary);
+}
+
+.legend-color.danger {
+  background: var(--chart-danger);
+}
+
+.legend-color.info {
+  background: var(--chart-info);
+}
+
+.legend-color.purple {
+  background: var(--chart-purple);
+}
+
+/* ============================================
+   PROGRESS INDICATORS
+   ============================================ */
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--chart-bg-light);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--chart-primary) 0%, var(--chart-secondary) 100%);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ============================================
+   COMPARATIVE ELEMENTS
+   ============================================ */
+
+.comparison-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.comparison-badge.up {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.comparison-badge.down {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.comparison-badge.neutral {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .charts-grid-2col {
+    grid-template-columns: 1fr;
+  }
+
+  .charts-grid-3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .charts-grid-4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chart-card {
+    padding: 1.25rem;
+  }
+
+  .chart-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .charts-grid,
+  .charts-grid-2col,
+  .charts-grid-3col,
+  .charts-grid-4col {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card {
+    padding: 1rem;
+  }
+
+  .chart-title {
+    font-size: 0.95rem;
+  }
+
+  .chart-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .chart-meta {
+    width: 100%;
+  }
+
+  .metric-value {
+    font-size: 1.75rem;
+  }
+
+  .chart-legend {
+    gap: 1rem;
+  }
+
+  .legend-item {
+    font-size: 0.85rem;
+  }
+}

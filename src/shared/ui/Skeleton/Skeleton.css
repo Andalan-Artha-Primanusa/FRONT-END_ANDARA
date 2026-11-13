@@ -1,0 +1,206 @@
+/* ========================================
+   SKELETON LOADING COMPONENT STYLES
+   Design System: White + Blue Theme
+   Status: Production Ready
+   ======================================== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    #f0f0f0 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ========================================
+   SKELETON SIZES
+   ====================================== */
+
+.skeleton {
+  height: 16px;
+  width: 100%;
+}
+
+.skeleton-text {
+  height: 16px;
+  margin-bottom: 8px;
+}
+
+.skeleton-text:last-child {
+  margin-bottom: 0;
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 40%;
+  margin-bottom: 16px;
+}
+
+.skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.skeleton-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-card {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-button {
+  width: 100px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-input {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   SKELETON WITH WAVE
+   ====================================== */
+
+.skeleton.skeleton-wave {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 25%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-wave 2s infinite;
+}
+
+@keyframes shimmer-wave {
+  0% {
+    background-position: 50% 0;
+  }
+  100% {
+    background-position: -50% 0;
+  }
+}
+
+/* ========================================
+   SKELETON WRAPPER / GROUP
+   ====================================== */
+
+.skeleton-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-group.horizontal {
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+
+.skeleton-group.horizontal .skeleton-avatar {
+  flex-shrink: 0;
+}
+
+.skeleton-group.horizontal > div:nth-child(n + 2) {
+  flex: 1;
+}
+
+/* ========================================
+   SKELETON TABLE
+   ====================================== */
+
+.skeleton-table-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skeleton-table-row:last-child {
+  border-bottom: none;
+}
+
+.skeleton-table-row .skeleton {
+  height: 20px;
+}
+
+/* ========================================
+   SKELETON RESPONSIVE
+   ====================================== */
+
+@media (max-width: 480px) {
+  .skeleton-group.horizontal {
+    flex-direction: column;
+  }
+
+  .skeleton-group.horizontal .skeleton-avatar {
+    margin-bottom: 8px;
+  }
+
+  .skeleton-table-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   SKELETON ACCESSIBILITY
+   ====================================== */
+
+.skeleton[role='status'] {
+  position: relative;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .skeleton {
+    border: 1px solid var(--color-border);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton,
+  .skeleton.skeleton-wave {
+    animation: none;
+    background: var(--color-background);
+  }
+}
+
+/* Dark mode support (future) */
+@media (prefers-color-scheme: dark) {
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      #333333 25%,
+      #444444 50%,
+      #333333 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}

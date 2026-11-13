@@ -1,0 +1,197 @@
+﻿.enrollments-page {
+  --primary-color: var(--color-primary);
+  --success-color: var(--color-success);
+  --warning-color: var(--color-warning);
+  --danger-color: var(--color-error);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --border-color: var(--color-border);
+}
+
+.empty-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-soft);
+  border-radius: 16px;
+  color: var(--text-secondary);
+}
+
+.empty-state h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.status-filters {
+  display: flex;
+  gap: 8px;
+  padding: 0 1.5rem 1rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.status-filter {
+  padding: 8px 14px;
+  border: 1px solid var(--border-color);
+  background: var(--color-white);
+  color: var(--text-secondary);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-filter:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.status-filter.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--color-white);
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.enrollment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.enrollment-card {
+  background: var(--color-white);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.enrollment-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.enrollment-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.enrollment-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-light));
+  color: var(--primary-color);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.enrollment-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.enrollment-info h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.enrollment-employee {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.enrollment-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.enrollment-details {
+  margin-bottom: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--color-primary));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 40px;
+}
+
+.enrollment-actions {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.enrollment-actions button {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .enrollment-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .status-filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+  
+  .status-filter {
+    flex-shrink: 0;
+  }
+}

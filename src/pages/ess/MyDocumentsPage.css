@@ -1,0 +1,174 @@
+.my-documents-page .document-upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.my-documents-page .document-upload-form .upload-dropzone {
+  min-height: 168px;
+  padding: 1.25rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.my-documents-page .document-upload-form .upload-dropzone:hover,
+.my-documents-page .document-upload-form .upload-dropzone--active {
+  border-color: var(--color-primary);
+  background: #eff6ff;
+}
+
+.my-documents-page .document-upload-form .upload-dropzone--error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.my-documents-page .document-upload-form .upload-file-input {
+  display: none;
+}
+
+.my-documents-page .document-upload-form .upload-dropzone-content {
+  color: #64748b;
+  text-align: center;
+}
+
+.my-documents-page .document-upload-form .upload-dropzone-icon {
+  margin-bottom: 0.65rem;
+  color: #94a3b8;
+}
+
+.my-documents-page .document-upload-form .upload-dropzone-text {
+  margin: 0 0 0.35rem;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.my-documents-page .document-upload-form .upload-dropzone-hint {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.my-documents-page .document-upload-form .upload-file-preview {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.my-documents-page .document-upload-form .upload-file-icon {
+  color: var(--color-primary);
+}
+
+.my-documents-page .document-upload-form .upload-file-info {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.my-documents-page .document-upload-form .upload-file-name {
+  overflow: hidden;
+  color: #0f172a;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.my-documents-page .document-upload-form .upload-file-size {
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.my-documents-page .document-upload-form .upload-file-remove {
+  padding: 0.35rem;
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.my-documents-page .document-upload-form .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.my-documents-page .document-upload-form .form-group {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.my-documents-page .document-upload-form .form-label {
+  margin: 0;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.my-documents-page .document-upload-form .required {
+  color: #ef4444;
+}
+
+.my-documents-page .document-upload-form .form-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  padding: 0 0.9rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #fff;
+  color: #0f172a;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.my-documents-page .document-upload-form .form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.12);
+}
+
+.my-documents-page .document-upload-form .form-input::placeholder {
+  color: #94a3b8;
+}
+
+.my-documents-page .document-upload-form .form-input--error {
+  border-color: #ef4444;
+}
+
+.my-documents-page .document-upload-form .field-error {
+  margin: 0;
+  color: #dc2626;
+  font-size: 0.75rem;
+}
+
+.my-documents-page .document-upload-form .field-hint {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 600px) {
+  .my-documents-page .document-upload-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .my-documents-page .document-upload-form .upload-dropzone {
+    min-height: 145px;
+  }
+}

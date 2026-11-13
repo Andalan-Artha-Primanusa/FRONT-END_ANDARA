@@ -1,0 +1,60 @@
+.ui-tabs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ui-tabs-header {
+  display: flex;
+  border-bottom: 2px solid var(--gray-200);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ui-tabs-header::-webkit-scrollbar {
+  display: none;
+}
+
+.ui-tab-btn {
+  background: transparent;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.ui-tab-btn:hover {
+  color: var(--gray-800);
+}
+
+.ui-tab-btn.active {
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+.ui-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* cover the border bottom */
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary-blue);
+  transform: scaleX(0);
+  transition: transform 0.2s ease-out;
+}
+
+.ui-tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+.ui-tabs-content {
+  animation: fadeIn 0.3s ease-out;
+}

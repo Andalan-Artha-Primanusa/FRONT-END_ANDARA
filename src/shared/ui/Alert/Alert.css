@@ -1,0 +1,294 @@
+/* ========================================
+   ALERT COMPONENT STYLES
+   Design System: White + Blue Theme
+   Status: Production Ready
+   ======================================== */
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  animation: slideDown 300ms ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   ALERT VARIANTS
+   ====================================== */
+
+/* Success Alert */
+.alert.alert-success {
+  background-color: var(--color-success-light);
+  border-color: var(--color-success);
+  color: #065f46;
+}
+
+.alert.alert-success .alert-icon {
+  color: var(--color-success);
+}
+
+/* Error Alert */
+.alert.alert-error {
+  background-color: var(--color-error-light);
+  border-color: var(--color-error);
+  color: #7f1d1d;
+}
+
+.alert.alert-error .alert-icon {
+  color: var(--color-error);
+}
+
+/* Warning Alert */
+.alert.alert-warning {
+  background-color: var(--color-warning-light);
+  border-color: var(--color-warning);
+  color: #78350f;
+}
+
+.alert.alert-warning .alert-icon {
+  color: var(--color-warning);
+}
+
+/* Info Alert */
+.alert.alert-info {
+  background-color: #cffafe;
+  border-color: #06b6d4;
+  color: #164e63;
+}
+
+.alert.alert-info .alert-icon {
+  color: #06b6d4;
+}
+
+/* ========================================
+   ALERT CONTENT
+   ====================================== */
+
+.alert-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.alert-title {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+.alert-description {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  opacity: 0.9;
+}
+
+.alert-list {
+  margin: var(--space-2) 0 0 0;
+  padding-left: var(--space-6);
+}
+
+.alert-list li {
+  margin: var(--space-1) 0;
+  font-size: var(--font-size-sm);
+}
+
+/* ========================================
+   ALERT ICON
+   ====================================== */
+
+.alert-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+/* ========================================
+   ALERT CLOSE BUTTON
+   ====================================== */
+
+.alert-close-button {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: currentColor;
+  opacity: 0.6;
+  transition: opacity var(--transition-normal);
+  margin-top: 2px;
+}
+
+.alert-close-button:hover {
+  opacity: 1;
+}
+
+.alert-close-button:active {
+  transform: scale(0.9);
+}
+
+/* ========================================
+   ALERT ACTIONS
+   ====================================== */
+
+.alert-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.alert-actions button {
+  font-size: var(--font-size-sm);
+}
+
+/* ========================================
+   ALERT VARIANTS - FILLED
+   ====================================== */
+
+.alert.alert-filled.alert-success {
+  background-color: var(--color-success);
+  color: white;
+  border-color: var(--color-success);
+}
+
+.alert.alert-filled.alert-error {
+  background-color: var(--color-error);
+  color: white;
+  border-color: var(--color-error);
+}
+
+.alert.alert-filled.alert-warning {
+  background-color: var(--color-warning);
+  color: white;
+  border-color: var(--color-warning);
+}
+
+.alert.alert-filled.alert-info {
+  background-color: #06b6d4;
+  color: white;
+  border-color: #06b6d4;
+}
+
+.alert.alert-filled .alert-icon {
+  color: currentColor;
+}
+
+/* ========================================
+   ALERT VARIANTS - OUTLINED
+   ====================================== */
+
+.alert.alert-outlined {
+  background-color: transparent;
+}
+
+/* ========================================
+   ALERT CONTAINER
+   ====================================== */
+
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ========================================
+   RESPONSIVE
+   ====================================== */
+
+@media (max-width: 768px) {
+  .alert {
+    padding: var(--space-3);
+  }
+
+  .alert-close-button {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .alert {
+    padding: var(--space-2);
+    gap: var(--space-2);
+  }
+
+  .alert-title {
+    font-size: var(--font-size-sm);
+  }
+
+  .alert-description {
+    font-size: 12px;
+  }
+
+  .alert-actions {
+    flex-direction: column;
+  }
+
+  .alert-actions button {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ====================================== */
+
+.alert[role='alert'] {
+  /* Enhanced for screen readers */
+}
+
+.alert-close-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .alert {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .alert {
+    animation: none;
+  }
+
+  .alert-close-button:active {
+    transform: none;
+  }
+}
+
+/* Dark mode support (future) */
+@media (prefers-color-scheme: dark) {
+  .alert {
+    /* Dark theme adjustments here */
+  }
+}

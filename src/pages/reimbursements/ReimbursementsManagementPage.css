@@ -1,0 +1,207 @@
+@import url('../admin/AdminCrudPages.css');
+
+.crud-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--color-background);
+  border-radius: var(--radius-lg);
+}
+
+.reimbursement-hero,
+.reimbursement-summary-card,
+.reimbursement-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.reimbursement-hero { padding: 1.25rem; }
+
+.crud-page-badge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 0.5rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.crud-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.crud-header-title-row h1 { margin: 0; }
+
+.crud-header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.reimbursement-status {
+  margin-top: 0.5rem;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.reimbursement-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.reimbursement-summary-card {
+  padding: 1.25rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.reimbursement-summary-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -30px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, var(--color-primary-lighter) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.reimbursement-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.reimbursement-summary-label {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.reimbursement-summary-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.reimbursement-summary-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.reimbursement-summary-icon--blue {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-light);
+}
+
+.reimbursement-summary-icon--green {
+  background: var(--color-success-light);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-light);
+}
+
+.reimbursement-summary-icon--orange {
+  background: var(--color-warning-light);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning-light);
+}
+
+.reimbursement-summary-icon--purple {
+  background: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+  border: 1px solid rgba(139, 92, 246, 0.12);
+}
+
+.reimbursement-summary-value {
+  margin-top: 0.5rem;
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+  letter-spacing: -1px;
+}
+
+.reimbursement-summary-change {
+  margin-top: 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.reimbursement-card h2 {
+  margin-top: 0;
+  color: var(--color-text-primary);
+}
+
+.reimbursement-card strong {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.reimbursement-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reimbursement-table thead tr {
+  background: var(--color-primary-lighter);
+}
+
+.reimbursement-table th {
+  padding: 0.75rem 1rem;
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-bold);
+  text-align: left;
+  border-bottom: 2px solid var(--color-primary-light);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.reimbursement-table td {
+  padding: 0.75rem 1rem;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+
+.reimbursement-empty-row {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--color-text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .crud-page { padding: 1rem; }
+  .reimbursement-hero { padding: 1rem; }
+  .reimbursement-summary-grid { grid-template-columns: 1fr; }
+  .crud-header-title-row h1 { font-size: 1.25rem; }
+}

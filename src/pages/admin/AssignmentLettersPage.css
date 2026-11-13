@@ -1,0 +1,221 @@
+﻿.assignment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.assignment-card {
+  padding: 0 !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  border: 1px solid var(--color-border) !important;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease;
+}
+
+.assignment-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.assignment-card-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.assignment-card-title-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.assignment-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.assignment-title {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.assignment-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--color-text-tertiary);
+}
+
+.assignment-id {
+  font-weight: 600;
+  background: var(--color-surface-soft);
+  padding: 1px 7px;
+  border-radius: 4px;
+  color: var(--color-text-secondary);
+}
+
+.assignment-dot {
+  color: var(--color-text-tertiary);
+}
+
+.assignment-card-body {
+  padding: 0 1.5rem 1.25rem;
+  flex: 1;
+}
+
+.assignment-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.assignment-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.assignment-info-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 2px;
+}
+
+.assignment-info-value {
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.assignment-date-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--color-surface-soft);
+  border-radius: 10px;
+  border: 1px solid var(--color-surface-soft);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.assignment-date-box strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.assignment-date-arrow {
+  margin: 0 6px;
+  color: var(--color-text-tertiary);
+}
+
+.assignment-notes {
+  margin-bottom: 0.5rem;
+}
+
+.assignment-notes-text {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px dashed var(--color-border);
+}
+
+.assignment-card-footer {
+  border-top: 1px solid var(--color-surface-soft);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.assignment-actions-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.assignment-actions-row .ui-button {
+  flex: 1;
+  height: 38px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.assignment-btn-approve.ui-button--primary {
+  background: var(--color-primary);
+}
+
+.assignment-btn-reject {
+  color: var(--color-error) !important;
+  border-color: var(--color-error-light) !important;
+}
+
+.assignment-btn-pdf {
+  width: 100%;
+  border-color: var(--color-primary-light) !important;
+  color: var(--color-primary) !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem;
+  height: 38px;
+  border-radius: 10px;
+}
+
+.assignment-history-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 36px;
+  border: none;
+  background: var(--color-surface-soft);
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.assignment-history-btn:hover {
+  background: var(--color-surface-soft);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 700px) {
+  .assignment-grid {
+    grid-template-columns: 1fr;
+  }
+  .assignment-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .assignment-card-header {
+    flex-direction: column;
+  }
+}

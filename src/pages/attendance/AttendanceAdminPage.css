@@ -1,0 +1,115 @@
+/* ============================================ */
+/* AttendanceAdminPage - Same style as Dashboard  */
+/* ============================================ */
+
+/* Summary Cards - Same as Dashboard KPI Cards */
+.attendance-summary-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.attendance-summary-card {
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.attendance-summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.attendance-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.attendance-summary-label {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.attendance-summary-subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+.attendance-summary-value {
+  font-size: 1.75rem;
+  color: var(--gray-900);
+  font-weight: 700;
+  line-height: 1.2;
+  font-family: var(--font-family-heading);
+}
+
+.attendance-summary-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.attendance-summary-trend {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-200);
+  font-family: var(--font-family-heading);
+}
+
+/* Icon Colors */
+.attendance-icon-blue { 
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-light) 100%); 
+  color: var(--color-primary-dark); 
+}
+.attendance-icon-green { 
+  background: linear-gradient(135deg, var(--color-success-light) 0%, var(--color-success-light) 100%); 
+  color: var(--color-success); 
+}
+.attendance-icon-orange { 
+  background: linear-gradient(135deg, var(--color-warning-light) 0%, var(--color-warning-light) 100%); 
+  color: var(--color-warning); 
+}
+.attendance-icon-red { 
+  background: linear-gradient(135deg, var(--color-error-light) 0%, var(--color-error-light) 100%); 
+  color: var(--color-error); 
+}
+
+/* Value Colors */
+.attendance-value-blue { color: var(--color-primary-dark); }
+.attendance-value-green { color: var(--color-success); }
+.attendance-value-orange { color: var(--color-warning); }
+.attendance-value-red { color: var(--color-error); }
+
+/* Control Section - Same style as Dashboard */
+.control-section-card {
+  background: var(--color-white);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.table-count {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}

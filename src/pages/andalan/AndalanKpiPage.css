@@ -1,0 +1,44 @@
+.andalan-kpi-page { display: flex; flex-direction: column; gap: 1rem; }
+.andalan-kpi-header-actions, .andalan-kpi-form-actions, .andalan-kpi-row-actions { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.andalan-kpi-primary-button, .andalan-kpi-secondary-button, .andalan-kpi-outline-button, .andalan-kpi-action-button, .andalan-kpi-icon-button, .andalan-kpi-remove-button { display: inline-flex !important; align-items: center; justify-content: center; gap: .45rem; border-radius: 10px; font-weight: 700; cursor: pointer; }
+.andalan-kpi-primary-button { min-height: 40px; padding: .65rem 1rem; border: 1px solid #0a7a3e !important; background: #0a7a3e !important; color: #fff !important; }
+.andalan-kpi-primary-button:hover:not(:disabled) { background: #066330 !important; }
+.andalan-kpi-secondary-button { min-height: 40px; padding: .65rem 1rem; border: 1px solid #0a7a3e !important; background: #fff !important; color: #0a7a3e !important; }
+.andalan-kpi-outline-button { min-height: 34px; padding: .45rem .75rem; border: 1px solid #b6d8c4 !important; background: #f7fbf8 !important; color: #0a7a3e !important; }
+.andalan-kpi-icon-button { width: 34px; height: 34px; border: 1px solid #f0c3c3 !important; background: #fff5f5 !important; color: #bd3030 !important; }
+.andalan-kpi-remove-button { min-height: 30px; padding: .35rem .6rem; border: 0 !important; background: transparent !important; color: #bd3030 !important; font-size: .78rem; }
+.andalan-kpi-primary-button:disabled, .andalan-kpi-secondary-button:disabled, .andalan-kpi-action-button:disabled { opacity: .55; cursor: wait; }
+.andalan-kpi-error { border-radius: 10px; padding: .8rem 1rem; color: #a32424; background: #fff1f1; border: 1px solid #f3c6c6; }
+.andalan-kpi-summary-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.andalan-kpi-summary-grid .card { display: flex; flex-direction: column; gap: .35rem; }
+.andalan-kpi-summary-grid span, .andalan-kpi-summary-grid small { color: #6b7b73; }
+.andalan-kpi-summary-grid strong { color: #0a7a3e; font-size: 2rem; line-height: 1.1; }
+.andalan-kpi-section-heading, .andalan-kpi-items-heading, .andalan-kpi-item-form-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.andalan-kpi-section-heading h2, .andalan-kpi-items-heading h3 { margin: 0; color: #14251d; }
+.andalan-kpi-section-heading p { margin: .35rem 0 0; color: #6b7b73; font-size: .88rem; }
+.andalan-kpi-section-heading > svg { color: #0a7a3e; flex-shrink: 0; }
+.andalan-kpi-form-card, .andalan-kpi-list-card { display: flex; flex-direction: column; gap: 1rem; }
+.andalan-kpi-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
+.andalan-kpi-form-grid label { display: grid; gap: .4rem; color: #263d31; font-size: .84rem; font-weight: 650; }
+.andalan-kpi-form-wide { grid-column: 1 / -1; }
+.andalan-kpi-form-grid input, .andalan-kpi-form-grid select, .andalan-kpi-form-grid textarea { width: 100%; box-sizing: border-box; border: 1px solid #cbdad1; border-radius: 9px; padding: .7rem .8rem; background: #fff; color: #14251d; font: inherit; }
+.andalan-kpi-form-grid select { cursor: pointer; }
+.andalan-kpi-form-grid textarea { resize: vertical; }
+.andalan-kpi-item-form { display: flex; flex-direction: column; gap: .8rem; padding: 1rem; border: 1px solid #dbe7df; border-radius: 14px; background: #f7fbf8; }
+.andalan-kpi-item-form-head strong { color: #0a7a3e; }
+.andalan-kpi-form-actions { justify-content: flex-end; padding-top: .25rem; }
+.andalan-kpi-empty { padding: 2rem 1rem; border: 1px dashed #cbdad1; border-radius: 14px; text-align: center; color: #6b7b73; }
+.andalan-kpi-table-wrap { overflow-x: auto; }
+.andalan-kpi-table { width: 100%; min-width: 820px; border-collapse: collapse; }
+.andalan-kpi-table th { padding: .8rem; text-align: left; color: #6b7b73; font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; border-bottom: 1px solid #dbe7df; }
+.andalan-kpi-table td { padding: .9rem .8rem; color: #263d31; border-bottom: 1px solid #edf3ef; vertical-align: middle; }
+.andalan-kpi-table td strong, .andalan-kpi-table td small { display: block; }
+.andalan-kpi-table td small { margin-top: .25rem; color: #82928a; font-size: .76rem; }
+.andalan-kpi-status { display: inline-flex; padding: .35rem .6rem; border-radius: 999px; font-size: .75rem; font-weight: 800; white-space: nowrap; }
+.andalan-kpi-status-draft { background: #f1f5f3; color: #51645a; }
+.andalan-kpi-status-rejected { background: #fff0f0; color: #b52d2d; }
+.andalan-kpi-status-finalized { background: #ddf8ea; color: #00613f; }
+.andalan-kpi-status-supervisor_review, .andalan-kpi-status-head_review, .andalan-kpi-status-hr_review, .andalan-kpi-status-director_review { background: #fff4d8; color: #8b6100; }
+.andalan-kpi-action-button { min-height: 34px; padding: .45rem .7rem; border: 1px solid #b6d8c4 !important; background: #f4fbf7 !important; color: #0a7a3e !important; font-size: .78rem; }
+@media (max-width: 900px) { .andalan-kpi-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .andalan-kpi-summary-grid, .andalan-kpi-form-grid { grid-template-columns: 1fr; } .andalan-kpi-form-wide { grid-column: auto; } .andalan-kpi-header-actions { width: 100%; } .andalan-kpi-header-actions button { flex: 1; } }

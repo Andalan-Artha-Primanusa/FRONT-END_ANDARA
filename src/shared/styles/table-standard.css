@@ -1,0 +1,1049 @@
+/* ============================================================
+   GLOBAL DATA-TABLE STANDARD (Single Design Language)
+   One look for all list/table pages:
+   [Quick Filter]           [Search] [Filter] [+ Action]
+   -------------------------------------------------------
+   Toolbar → Table → Footer + Pagination as ONE card
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. TABLE CARD CONTAINER
+   ------------------------------------------------------------ */
+.table-section {
+  margin-bottom: 1.5rem;
+}
+
+.wuw-table-area,
+.table-area,
+.employee-table-area,
+.task-table-area,
+.payroll-report-table-area,
+.attendance-table-area,
+.leave-table-area,
+.admin-table-area {
+  background: var(--color-white, #ffffff);
+  border: 1px solid var(--color-border, #dde5e2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.table-section .table-area,
+.table-section .wuw-table-area {
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------
+   2. TOOLBAR (Quick filter + Search + Filter + Actions)
+   ------------------------------------------------------------ */
+.table-toolbar {
+  padding: 1rem 1.25rem;
+  background: var(--color-white, #ffffff);
+  border-bottom: 1px solid var(--color-border-light, #eaf2f0);
+}
+
+.control-section-inner,
+.control-section-header,
+.toolbar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.control-actions,
+.toolbar-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Quick filter: segmented control */
+.elyra-tabs,
+.segmented-control {
+  display: inline-flex;
+  gap: 0.25rem;
+  background: var(--gray-100, #f1f5f9);
+  padding: 4px;
+  border-radius: 999px;
+  flex-wrap: wrap;
+}
+
+.elyra-tab,
+.segmented-btn {
+  height: 38px;
+  padding: 0 1rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary, #66736f);
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.elyra-tab:hover,
+.segmented-btn:hover {
+  background: var(--color-primary-lighter, #f0faf8);
+  color: var(--color-primary, #0A7A3E);
+}
+
+.elyra-tab.active,
+.segmented-btn.active {
+  background: var(--color-primary, #0A7A3E);
+  color: var(--color-white, #ffffff);
+  box-shadow: 0 2px 8px rgba(10, 122, 62, 0.2);
+}
+
+/* Search field */
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+  max-width: 360px;
+}
+
+.search-icon-inside {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-tertiary, #a3b1ae);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-pill,
+.search-input,
+.search-box input[type='text'],
+.search-box input {
+  width: 100%;
+  height: 40px;
+  padding: 0 1rem 0 2.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border, #dde5e2);
+  background: var(--gray-50, #f8fafc);
+  font-size: 13px;
+  color: var(--color-text-primary, #18201e);
+  font-family: var(--font-family-base);
+  outline: none;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-input-pill::placeholder,
+.search-input::placeholder {
+  color: var(--color-text-tertiary, #a3b1ae);
+}
+
+.search-input-pill:focus,
+.search-input:focus {
+  background: var(--color-white, #ffffff);
+  border-color: var(--color-primary, #0A7A3E);
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1);
+}
+
+/* Filter button (matches search height) */
+.filter-btn-rounded,
+.filter-btn,
+.btn-filter {
+  height: 40px;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border, #dde5e2);
+  background: var(--color-white, #ffffff);
+  color: var(--color-text-secondary, #66736f);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-family-base);
+  white-space: nowrap;
+}
+
+.filter-btn-rounded:hover,
+.filter-btn:hover,
+.btn-filter:hover {
+  background: var(--gray-100, #f1f5f9);
+  border-color: var(--gray-300, #cbd5d1);
+}
+
+.filter-btn-rounded.active,
+.filter-btn.active,
+.btn-filter.active {
+  background: var(--color-primary-light, #E8F5EC);
+  color: var(--color-primary-dark, #075B2C);
+  border-color: rgba(10, 122, 62, 0.35);
+}
+
+.control-actions .filter-btn-rounded,
+.control-actions .filter-btn,
+.control-actions .btn-filter {
+  height: 40px;
+}
+
+/* ------------------------------------------------------------
+   3. ADVANCED FILTER PANEL (popover / inline dropdown)
+   ------------------------------------------------------------ */
+.filter-dropdown,
+.advanced-filter-panel,
+.filter-panel {
+  margin-top: 1rem;
+  padding: 1rem 0 0;
+  border-top: 1px solid var(--color-border-light, #eaf2f0);
+}
+
+.filter-row,
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.filter-group,
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.filter-group label,
+.filter-field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-secondary, #66736f);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.filter-select-premium,
+.filter-group select,
+.filter-field select,
+.filter-group input,
+.filter-field input {
+  width: 100%;
+  height: 40px;
+  padding: 0 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #dde5e2);
+  background: var(--color-white, #ffffff);
+  font-size: 13px;
+  color: var(--color-text-primary, #18201e);
+  font-family: var(--font-family-base);
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.filter-select-premium:focus,
+.filter-group select:focus,
+.filter-field select:focus {
+  border-color: var(--color-primary, #0A7A3E);
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1);
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* ------------------------------------------------------------
+   4. TABLE
+   ------------------------------------------------------------ */
+.table-wrap {
+  overflow-x: auto;
+  border-top: 1px solid var(--color-border-light, #eaf2f0);
+}
+
+.data-table,
+.wuw-table,
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Header */
+.data-table thead th,
+.wuw-table thead th,
+.table thead th,
+.table-header-cell {
+  background: var(--gray-50, #f8fafc);
+  color: var(--color-text-secondary, #64748b);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--color-border, #dde5e2);
+  border-right: 1px solid transparent;
+  white-space: nowrap;
+  height: 48px;
+  font-family: var(--font-family-base);
+}
+
+.data-table thead th:last-child,
+.wuw-table thead th:last-child,
+.table thead th:last-child {
+  border-right: none;
+}
+
+.data-table thead th.th-center,
+.data-table thead th.tb-center,
+.wuw-table thead th.th-center,
+.table thead th.table-cell-center,
+.data-table thead th.th-right,
+.wuw-table thead th.th-right,
+.table thead th.table-cell-right {
+  text-align: center;
+}
+
+.data-table thead th.th-right,
+.wuw-table thead th.th-right,
+.table thead th.table-cell-right {
+  text-align: right;
+}
+
+/* Body rows */
+.data-table tbody td,
+.wuw-table tbody td,
+.table tbody td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--color-border-light, #eef2f7);
+  color: var(--color-text-primary, #18201e);
+  font-size: 13.5px;
+  vertical-align: middle;
+  line-height: 1.45;
+  font-family: var(--font-family-base);
+}
+
+.data-table tbody tr:last-child td,
+.wuw-table tbody tr:last-child td,
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr,
+.wuw-table tbody tr,
+.table tbody tr {
+  transition: background 120ms ease;
+  height: 60px;
+}
+
+.data-table tbody tr:hover,
+.wuw-table tbody tr:hover,
+.table tbody tr:hover {
+  background: var(--color-primary-lighter, #f7fcfb);
+}
+
+/* Cell alignment */
+.data-table td.td-center,
+.data-table td.tb-center,
+.wuw-table td.td-center,
+.table td.table-cell-center {
+  text-align: center;
+}
+
+.data-table td.td-right,
+.wuw-table td.td-right,
+.table td.table-cell-right {
+  text-align: right;
+}
+
+/* Repeating selectors (legacy pages using "tb-" prefixes) */
+.data-table td.tb-center,
+.data-table th.tb-center,
+.table-cell-center {
+  text-align: center;
+}
+
+/* Bare alignment helpers used across legacy pages */
+.td-center,
+.th-center,
+.tb-center,
+.cell-center {
+  text-align: center;
+}
+
+.td-right,
+.th-right {
+  text-align: right;
+}
+
+/* Secondary stacked text inside cells */
+.cell-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.cell-stacked__sub,
+.cell-secondary {
+  font-size: 12px;
+  color: var(--color-text-tertiary, #a3b1ae);
+}
+
+.cell-primary,
+.cell-name-text {
+  font-weight: 600;
+  color: var(--color-text-primary, #18201e);
+}
+
+/* ------------------------------------------------------------
+   5. STATUS BADGE
+   ------------------------------------------------------------ */
+.badge-soft,
+.status-badge,
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  font-family: var(--font-family-base);
+}
+
+.badge-soft--blue,
+.status-badge--info {
+  background: var(--color-primary-light, #E8F5EC);
+  color: var(--color-primary-dark, #075B2C);
+}
+
+.badge-soft--green,
+.status-badge--success,
+.status-badge--approved,
+.status-badge--active,
+.status-badge--paid,
+.status-badge--completed {
+  background: var(--color-success-light, #E8F5EC);
+  color: #08703A;
+}
+
+.badge-soft--orange,
+.badge-soft--yellow,
+.status-badge--warning,
+.status-badge--pending,
+.status-badge--submitted,
+.status-badge--probation,
+.status-badge--draft {
+  background: var(--color-warning-light, #FFF8D6);
+  color: #B88A00;
+}
+
+.badge-soft--red,
+.status-badge--error,
+.status-badge--rejected,
+.status-badge--resigned,
+.status-badge--cancelled,
+.status-badge--inactive {
+  background: var(--color-error-light, #fde8e8);
+  color: #b8322e;
+}
+
+.badge-soft--gray,
+.status-badge--default {
+  background: var(--gray-100, #f1f5f9);
+  color: var(--color-text-secondary, #66736f);
+}
+
+/* ------------------------------------------------------------
+   6. ACTION COLUMN
+   ------------------------------------------------------------ */
+.action-btn-group {
+  display: inline-flex;
+  gap: 0.375rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-family-base);
+  padding: 0;
+}
+
+.action-btn-edit,
+.action-btn-view,
+.action-btn-secondary,
+.action-btn-success,
+.action-btn-approve {
+  background: var(--color-primary-light, #E8F5EC);
+  color: var(--color-primary-dark, #075B2C);
+  border-color: transparent;
+}
+
+.action-btn-edit:hover,
+.action-btn-view:hover,
+.action-btn-approve:hover {
+  background: var(--color-primary, #0A7A3E);
+  color: #ffffff;
+}
+
+.action-btn-success {
+  background: var(--color-success-light, #E8F5EC);
+  color: #08703A;
+}
+
+.action-btn-success:hover {
+  background: #148f5b;
+  color: #ffffff;
+}
+
+.action-btn-delete,
+.action-btn-reject {
+  background: var(--color-error-light, #fde8e8);
+  color: #b8322e;
+  border-color: transparent;
+}
+
+.action-btn-delete:hover,
+.action-btn-reject:hover {
+  background: #c03b3b;
+  color: #ffffff;
+}
+
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------
+   7. FOOTER + PAGINATION
+   ------------------------------------------------------------ */
+.table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  min-height: 60px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--color-border, #dde5e2);
+  background: var(--color-white, #ffffff);
+}
+
+.pagination-info {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 13px;
+  color: var(--color-text-secondary, #66736f);
+  white-space: nowrap;
+}
+
+.pagination-info strong {
+  font-weight: 700;
+  color: var(--color-text-primary, #18201e);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #dde5e2);
+  background: var(--color-white, #ffffff);
+  color: var(--color-text-primary, #18201e);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-family-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled):not(.active) {
+  background: var(--gray-100, #f1f5f9);
+  border-color: var(--gray-300, #cbd5d1);
+}
+
+.pagination-btn.active {
+  background: var(--color-primary, #0A7A3E);
+  border-color: var(--color-primary, #0A7A3E);
+  color: var(--color-white, #ffffff);
+  box-shadow: 0 2px 8px rgba(10, 122, 62, 0.2);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Shared <Pagination/> component alias (harmonized) */
+.pagination-button {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #dde5e2);
+  background: var(--color-white, #ffffff);
+  color: var(--color-text-primary, #18201e);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pagination-button.active {
+  background: var(--color-primary, #0A7A3E);
+  border-color: var(--color-primary, #0A7A3E);
+  color: var(--color-white, #ffffff);
+}
+
+.pagination-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Page-size selector */
+.page-size-selector,
+.pagination-size-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 13px;
+  color: var(--color-text-secondary, #66736f);
+}
+
+.page-size-selector select,
+.pagination-size-selector select {
+  height: 34px;
+  padding: 0 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #dde5e2);
+  background: var(--color-white, #ffffff);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary, #18201e);
+  font-family: var(--font-family-base);
+  cursor: pointer;
+  outline: none;
+}
+
+/* ------------------------------------------------------------
+   8. EMPTY / LOADING / ERROR STATES inside table card
+   ------------------------------------------------------------ */
+.loading-state,
+.empty-state,
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--color-border-light, #eaf2f0);
+  color: var(--color-text-secondary, #66736f);
+}
+
+.empty-state h3,
+.empty-state-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #18201e);
+  margin: 0;
+}
+
+.empty-state p,
+.empty-state-description {
+  font-size: 13px;
+  color: var(--color-text-tertiary, #a3b1ae);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   9. RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .search-box {
+    min-width: 240px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .control-section-inner,
+  .control-section-header,
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-actions,
+  .toolbar-actions {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .search-box {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .control-actions .search-box {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .filter-btn-rounded,
+  .filter-btn,
+  .btn-filter {
+    flex: 1;
+  }
+
+  .elyra-tabs,
+  .segmented-control {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .table-pagination {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .pagination-info {
+    justify-content: center;
+  }
+
+  .pagination-controls,
+  .page-size-selector {
+    justify-content: center;
+  }
+
+  .filter-row,
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .data-table thead th,
+  .data-table tbody td {
+    padding: 10px 14px;
+  }
+
+  .table-pagination {
+    padding: 10px 14px;
+  }
+
+  .pagination-btn,
+  .pagination-button {
+    min-width: 30px;
+    height: 30px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+}
+
+/* ------------------------------------------------------------
+   10. SEPARATED TABLE LAYOUT
+   Filter/toolbar, table, and pagination are intentionally kept
+   as separate surfaces so they never visually stick together.
+   ------------------------------------------------------------ */
+body > .wuw-table-area,
+body > .table-area,
+body > .employee-table-area,
+body > .task-table-area,
+body > .payroll-report-table-area,
+body > .attendance-table-area,
+body > .leave-table-area,
+body > .admin-table-area,
+.wuw-table-area,
+.table-area,
+.employee-table-area,
+.task-table-area,
+.payroll-report-table-area,
+.attendance-table-area,
+.leave-table-area,
+.admin-table-area {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+/* The filter/search toolbar is its own card. */
+.wuw-table-area > .table-toolbar,
+.wuw-table-area > .control-section-card,
+.wuw-table-area > .integrated-table-toolbar,
+.table-area > .table-toolbar,
+.employee-table-area > .table-toolbar,
+.task-table-area > .table-toolbar,
+.payroll-report-table-area > .table-toolbar,
+.attendance-table-area > .table-toolbar,
+.leave-table-area > .table-toolbar,
+.admin-table-area > .table-toolbar {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  padding: 1.25rem !important;
+  background: var(--color-white, #ffffff) !important;
+  border: 1px solid var(--color-border, #dde5e2) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06)) !important;
+}
+
+/* Override the old integrated-card treatment as well. */
+body .integrated-table-area.wuw-table-area {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+body .integrated-table-area .integrated-table-toolbar.control-section-card {
+  margin: 0 !important;
+  padding: 1.25rem !important;
+  border: 1px solid var(--color-border, #dde5e2) !important;
+  border-radius: 16px !important;
+  background: var(--color-white, #ffffff) !important;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06)) !important;
+}
+
+/* Table body gets its own surface, apart from the controls. */
+.wuw-table-area .table-wrap,
+.table-area .table-wrap,
+.employee-table-area .table-wrap,
+.task-table-area .table-wrap,
+.payroll-report-table-area .table-wrap,
+.attendance-table-area .table-wrap,
+.leave-table-area .table-wrap,
+.admin-table-area .table-wrap {
+  flex: 0 0 auto;
+  border: 1px solid var(--color-border, #dde5e2) !important;
+  border-radius: 16px !important;
+  background: var(--color-white, #ffffff) !important;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06)) !important;
+  overflow-x: auto;
+}
+
+/* Pagination is always a separate bottom card with breathing room. */
+.wuw-table-area .table-pagination,
+.table-area .table-pagination,
+.employee-table-area .table-pagination,
+.task-table-area .table-pagination,
+.payroll-report-table-area .table-pagination,
+.attendance-table-area .table-pagination,
+.leave-table-area .table-pagination,
+.admin-table-area .table-pagination {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  border: 1px solid var(--color-border, #dde5e2) !important;
+  border-radius: 16px !important;
+  background: var(--color-white, #ffffff) !important;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06)) !important;
+}
+
+/* Standalone table cards use the same three-surface rhythm. */
+.table-card:has(.table-wrap),
+.data-table-card:has(.table-wrap),
+.payroll-table-card:has(.table-wrap),
+.crud-table-card:has(.table-wrap) {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.table-card:has(.table-wrap) > .table-header-bar,
+.data-table-card:has(.table-wrap) > .table-toolbar-shell,
+.table-card:has(.table-wrap) > .table-card-inner,
+.data-table-card:has(.table-wrap) > .table-wrap,
+.payroll-table-card:has(.table-wrap) > .table-wrap,
+.crud-table-card:has(.table-wrap) > .crud-table-wrap {
+  margin: 0 !important;
+  border: 1px solid var(--color-border, #dde5e2) !important;
+  border-radius: 16px !important;
+  background: var(--color-white, #ffffff) !important;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06)) !important;
+}
+
+.table-card:has(.table-wrap) > .table-card-inner {
+  padding: 1.25rem !important;
+}
+
+.table-card:has(.table-wrap) > .table-card-inner > .table-wrap {
+  border: 0 !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+.table-card:has(.table-wrap) > .table-pagination,
+.data-table-card:has(.table-wrap) > .table-pagination,
+.payroll-table-card:has(.table-wrap) > .table-pagination,
+.crud-table-card:has(.table-wrap) > .table-pagination {
+  margin: 0 !important;
+  border: 1px solid var(--color-border, #dde5e2) !important;
+  border-radius: 16px !important;
+  background: var(--color-white, #ffffff) !important;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06)) !important;
+}
+
+@media (max-width: 640px) {
+  .wuw-table-area,
+  .table-area,
+  .employee-table-area,
+  .task-table-area,
+  .payroll-report-table-area,
+  .attendance-table-area,
+  .leave-table-area,
+  .admin-table-area {
+    gap: 0.75rem !important;
+  }
+
+  .wuw-table-area > .table-toolbar,
+  .wuw-table-area > .control-section-card,
+  body .integrated-table-area .integrated-table-toolbar.control-section-card {
+    padding: 1rem !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   11. HORIZONTAL TABLE SCROLL
+   Keep the key identifier column visible while allowing wider
+   tables to be explored horizontally instead of being squeezed.
+   ------------------------------------------------------------ */
+.table-wrap,
+.crud-table-wrap,
+.payroll-table-wrap,
+.document-review-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto !important;
+  overflow-y: visible;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.data-table,
+.wuw-table,
+.table,
+.payroll-table,
+.crud-table {
+  width: max-content;
+  min-width: 100%;
+  table-layout: auto;
+}
+
+.data-table th,
+.data-table td,
+.wuw-table th,
+.wuw-table td,
+.table th,
+.table td,
+.payroll-table th,
+.payroll-table td,
+.crud-table th,
+.crud-table td {
+  white-space: nowrap;
+}
+
+/* The first column normally contains the employee/name or record ID.
+   Keep it available while the user scrolls through secondary columns. */
+.table-wrap .data-table th:first-child,
+.table-wrap .data-table td:first-child,
+.table-wrap .wuw-table th:first-child,
+.table-wrap .wuw-table td:first-child,
+.table-wrap .table th:first-child,
+.table-wrap .table td:first-child,
+.payroll-table-wrap .payroll-table th:first-child,
+.payroll-table-wrap .payroll-table td:first-child,
+.crud-table-wrap .crud-table th:first-child,
+.crud-table-wrap .crud-table td:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--color-white, #ffffff);
+  box-shadow: 5px 0 10px -10px rgba(15, 23, 42, 0.45);
+}
+
+.table-wrap .data-table thead th:first-child,
+.table-wrap .wuw-table thead th:first-child,
+.table-wrap .table thead th:first-child,
+.payroll-table-wrap .payroll-table thead th:first-child,
+.crud-table-wrap .crud-table thead th:first-child {
+  z-index: 4;
+  background: var(--gray-50, #f8fafc);
+}
+
+.table-wrap .data-table tbody td:first-child,
+.table-wrap .wuw-table tbody td:first-child,
+.table-wrap .table tbody td:first-child,
+.payroll-table-wrap .payroll-table tbody td:first-child,
+.crud-table-wrap .crud-table tbody td:first-child {
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .table-wrap,
+  .crud-table-wrap,
+  .payroll-table-wrap,
+  .document-review-table-wrap {
+    border-radius: 12px !important;
+  }
+
+  .data-table,
+  .wuw-table,
+  .table,
+  .payroll-table,
+  .crud-table {
+    min-width: max-content;
+  }
+}

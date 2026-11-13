@@ -1,0 +1,200 @@
+/* ========================================
+   PAGINATION COMPONENT STYLES
+   Design System: White + Blue Theme
+   Status: Production Ready
+   ======================================== */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.pagination.pagination-start {
+  justify-content: flex-start;
+}
+
+.pagination.pagination-end {
+  justify-content: flex-end;
+}
+
+/* ========================================
+   PAGINATION BUTTON
+   ====================================== */
+
+.pagination-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-normal);
+  user-select: none;
+}
+
+.pagination-button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.pagination-button:active:not(:disabled) {
+  background-color: #E8F5EC;
+  border-color: var(--color-primary-hover);
+}
+
+/* Active page */
+.pagination-button.active {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+
+.pagination-button.active:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* Disabled state */
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+/* Ellipsis button (not clickable) */
+.pagination-button.ellipsis {
+  cursor: default;
+  border: none;
+  background: none;
+}
+
+.pagination-button.ellipsis:hover {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   PAGINATION INFORMATION
+   ====================================== */
+
+.pagination-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-left: var(--space-2);
+}
+
+.pagination-info-text {
+  white-space: nowrap;
+}
+
+.pagination-info-select {
+  padding: 4px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.pagination-info-select:hover {
+  border-color: var(--color-primary);
+}
+
+.pagination-info-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1);
+}
+
+/* ========================================
+   PAGINATION MOBILE
+   ====================================== */
+
+@media (max-width: 768px) {
+  .pagination {
+    gap: var(--space-1);
+  }
+
+  .pagination-button {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 6px;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Hide page numbers on mobile */
+  .pagination-button.page:not(.active) {
+    display: none;
+  }
+
+  .pagination-button.page.show-mobile {
+    display: inline-flex;
+  }
+
+  .pagination-info {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination-button {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 4px;
+    font-size: 12px;
+  }
+
+  /* Hide buttons on very mobile, show only prev/next */
+  .pagination-button.page {
+    display: none;
+  }
+
+  .pagination-button.prev,
+  .pagination-button.next {
+    display: inline-flex;
+  }
+}
+
+/* ========================================
+   PAGINATION ACCESSIBILITY
+   ====================================== */
+
+.pagination-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .pagination-button {
+    border-width: 2px;
+  }
+
+  .pagination-button.active {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pagination-button {
+    transition: none;
+  }
+}

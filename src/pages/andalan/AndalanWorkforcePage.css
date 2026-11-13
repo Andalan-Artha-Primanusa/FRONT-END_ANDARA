@@ -1,0 +1,25 @@
+.andalan-workforce-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.andalan-workforce-heading > div { display: flex; align-items: center; gap: .65rem; color: #087c43; }
+.andalan-workforce-heading h2 { margin: 0; color: #10251b; }
+.andalan-workforce-primary { border: 0; border-radius: 12px; padding: .7rem 1rem; background: #087c43; color: #fff; font-weight: 800; display: inline-flex; align-items: center; gap: .4rem; cursor: pointer; }
+.andalan-workforce-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1.25rem 0; padding: 1rem; border: 1px solid #dbe9df; border-radius: 14px; }
+.andalan-workforce-form label { display: grid; gap: .4rem; color: #32473b; font-weight: 700; }
+.andalan-workforce-form label:last-of-type { grid-column: 1 / -1; }
+.andalan-workforce-form input, .andalan-workforce-form textarea { border: 1px solid #cbd9d0; border-radius: 10px; padding: .7rem; font: inherit; }
+.andalan-workforce-form select { border: 1px solid #cbd9d0; border-radius: 10px; padding: .7rem; font: inherit; background: #fff; }
+.andalan-workforce-wide { grid-column: 1 / -1; }
+.andalan-workforce-form-card { margin-bottom: 1rem; }
+.andalan-workforce-header-actions { display: flex; gap: .6rem; align-items: center; }
+.andalan-workforce-scope { color: #087c43; font-size: .8rem; font-weight: 800; }
+.andalan-workforce-actions { display: flex; gap: .4rem; justify-content: flex-end; }
+.andalan-workforce-approve, .andalan-workforce-reject { border: 0; border-radius: 8px; padding: .45rem .6rem; display: inline-flex; align-items: center; gap: .25rem; font-weight: 700; cursor: pointer; }
+.andalan-workforce-approve { background: #dff6e7; color: #087c43; }
+.andalan-workforce-reject { background: #ffe7e5; color: #a33a3a; }
+.andalan-workforce-approve:disabled, .andalan-workforce-reject:disabled { opacity: .55; cursor: wait; }
+.andalan-workforce-list { display: grid; gap: .7rem; margin-top: 1.25rem; }
+.andalan-workforce-list article { display: grid; grid-template-columns: 1.2fr 1fr 1.5fr auto; gap: 1rem; align-items: center; border: 1px solid #e1ebe4; border-radius: 12px; padding: 1rem; }
+.andalan-workforce-list span { color: #63746a; }
+.andalan-workforce-list b { color: #087c43; text-transform: capitalize; }
+.andalan-workforce-empty { margin-top: 1.25rem; padding: 2rem; text-align: center; color: #63746a; border: 1px dashed #bfd3c5; border-radius: 12px; }
+.andalan-workforce-error { color: #a33a3a; }
+@media (max-width: 800px) { .andalan-workforce-form, .andalan-workforce-list article { grid-template-columns: 1fr; } }

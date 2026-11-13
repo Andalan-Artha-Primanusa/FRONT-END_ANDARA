@@ -1,0 +1,113 @@
+.payroll-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payroll-card {
+  padding: 1.5rem;
+}
+
+.payroll-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.payroll-card-header h3 {
+  margin: 0;
+}
+
+.payroll-card-header p {
+  margin: 0.25rem 0 0;
+  color: var(--gray-500);
+  font-size: 0.95rem;
+}
+
+.payroll-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.payroll-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.payroll-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--gray-200);
+  background: var(--color-white);
+  color: var(--gray-900);
+}
+
+.payroll-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.stat-card {
+  background: rgba(10, 122, 62, 0.08);
+  border: 1px solid rgba(10, 122, 62, 0.15);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.stat-card span {
+  display: block;
+  color: var(--gray-500);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card strong {
+  font-size: 1.25rem;
+}
+
+.payroll-table-card {
+  padding: 1.5rem;
+}
+
+.payroll-response-card {
+  padding: 1.5rem;
+}
+
+.payroll-response-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.payroll-response {
+  background: var(--gray-100);
+  border-radius: 1rem;
+  padding: 1rem;
+  min-height: 150px;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.payroll-response-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: var(--gray-600);
+}
+
+.loading-indicator {
+  color: var(--blue-700);
+}
+
+@media (max-width: 900px) {
+  .payroll-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,41 @@
+.andalan-mobile-page { display: flex; flex-direction: column; gap: 1rem; }
+.andalan-mobile-tabs { display: flex; gap: .5rem; flex-wrap: nowrap; overflow-x: auto; padding-bottom: .25rem; }
+.andalan-mobile-tab { flex: 0 0 auto; }
+.andalan-mobile-news-image { display: block; width: 100%; max-height: 260px; object-fit: cover; border-radius: 14px; margin-bottom: 1rem; }
+.andalan-mobile-tab { border: 1px solid #dbe7df; border-radius: 10px; padding: .65rem 1rem; background: #fff; color: #496158; cursor: pointer; font-weight: 600; }
+.andalan-mobile-tab.active { background: #00613f; color: #fff; border-color: #00613f; }
+.andalan-mobile-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.andalan-mobile-list { display: flex; flex-direction: column; gap: .75rem; }
+.andalan-mobile-item { border: 1px solid #e5eee8; border-radius: 14px; padding: 1rem; background: #fff; }
+.andalan-mobile-item-head { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+.andalan-mobile-item-title { margin: 0; color: #14251d; font-size: 1rem; font-weight: 750; }
+.andalan-mobile-muted { color: #6b7b73; font-size: .875rem; line-height: 1.45; }
+.andalan-mobile-pill { display: inline-flex; border-radius: 999px; background: #ddf8ea; color: #00513a; padding: .3rem .6rem; font-size: .75rem; font-weight: 700; white-space: nowrap; }
+.andalan-mobile-empty { padding: 2rem 1rem; text-align: center; color: #6b7b73; border: 1px dashed #cbdad1; border-radius: 14px; }
+.andalan-mobile-card-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.andalan-mobile-card-header h2 { margin: 0; }
+.andalan-mobile-card-actions { display: flex; align-items: center; flex-shrink: 0; }
+.andalan-mobile-create-button { display: inline-flex !important; align-items: center; justify-content: center; gap: .45rem; min-height: 40px; padding: .65rem 1rem; border: 1px solid #0a7a3e !important; border-radius: 10px; background: #0a7a3e !important; color: #fff !important; font-weight: 700; cursor: pointer; opacity: 1 !important; visibility: visible !important; box-shadow: 0 5px 12px rgba(10, 122, 62, .18); }
+.andalan-mobile-create-button:hover { background: #066330 !important; border-color: #066330 !important; }
+.andalan-mobile-submit-button { display: inline-flex !important; align-items: center; justify-content: center; min-height: 42px; padding: .7rem 1.2rem; border: 1px solid #0a7a3e !important; border-radius: 10px; background: #0a7a3e !important; color: #fff !important; font-weight: 700 !important; cursor: pointer; opacity: 1 !important; visibility: visible !important; box-shadow: 0 5px 12px rgba(10, 122, 62, .18); }
+.andalan-mobile-submit-button:hover:not(:disabled) { background: #066330 !important; border-color: #066330 !important; }
+.andalan-mobile-submit-button:disabled { background: #7cae91 !important; border-color: #7cae91 !important; color: #fff !important; cursor: wait; }
+.andalan-mobile-form { display: grid; gap: .85rem; padding: 1rem; margin-bottom: 1rem; border: 1px solid #dbe7df; border-radius: 14px; background: #f7fbf8; }
+.andalan-mobile-form label { display: grid; gap: .4rem; color: #263d31; font-size: .85rem; font-weight: 650; }
+.andalan-mobile-form input:not([type="checkbox"]), .andalan-mobile-form textarea, .andalan-mobile-form select { width: 100%; box-sizing: border-box; border: 1px solid #cbdad1; border-radius: 9px; padding: .7rem .8rem; background: #fff; color: #14251d; font: inherit; }
+.andalan-mobile-form select { cursor: pointer; }
+.andalan-mobile-form-hint { color: #7b8c83; font-size: .78rem; font-weight: 500; }
+.andalan-mobile-form textarea { resize: vertical; }
+.andalan-mobile-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
+.andalan-mobile-checkbox { display: flex !important; grid-template-columns: auto 1fr; align-items: center; flex-direction: row; gap: .5rem !important; }
+.andalan-mobile-header-actions { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.andalan-mobile-table-wrap { width: 100%; overflow-x: auto; }
+.andalan-mobile-table-wrap .data-table { min-width: 760px; }
+.andalan-mobile-table-wrap td strong, .andalan-mobile-table-subtext { display: block; }
+.andalan-mobile-table-subtext { margin-top: .25rem; color: #7a9085; font-size: .78rem; max-width: 360px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.andalan-mobile-table-empty { padding: 3rem 1rem !important; text-align: center; color: #7a9085; }
+.andalan-mobile-page-form { max-width: 960px; margin: 0 auto; }
+.andalan-mobile-form-actions { display: flex; gap: .65rem; flex-wrap: wrap; align-items: center; }
+.andalan-mobile-cancel-button { min-height: 42px; padding: .7rem 1.2rem; border-radius: 10px; border: 1px solid #0a7a3e; background: #fff; color: #0a7a3e; font-weight: 700; cursor: pointer; }
+.andalan-mobile-cancel-button:hover { background: #e8f5ec; }
+@media (max-width: 800px) { .andalan-mobile-grid, .andalan-mobile-form-grid { grid-template-columns: 1fr; } }

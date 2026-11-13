@@ -1,0 +1,461 @@
+/* ========================================
+   FORM COMPONENTS STYLES
+   Design System: White + Blue Theme
+   All colors & spacing use CSS variables
+   Status: Production Ready
+   ======================================== */
+
+/* ========================================
+   FORM GROUP - Container for form field
+   ====================================== */
+
+.ui-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.ui-form-group--inline {
+  flex-direction: row;
+  align-items: flex-end;
+  gap: var(--space-3);
+}
+
+.ui-form-group--row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .ui-form-group--row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   LABEL - Form field label
+   ====================================== */
+
+.ui-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.ui-label--required::after {
+  content: '*';
+  color: var(--color-error);
+  font-weight: bold;
+}
+
+.ui-label--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ui-label-help {
+  font-size: 11px;
+  font-weight: normal;
+  color: var(--color-text-secondary);
+  margin-left: auto;
+}
+
+/* ========================================
+   INPUT - Text input field
+   ====================================== */
+
+.ui-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 var(--space-3);
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.ui-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.ui-input:hover:not(:disabled) {
+  border-color: var(--color-border);
+}
+
+.ui-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1);
+}
+
+.ui-input:disabled {
+  background-color: var(--color-gray-100);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ui-input:read-only {
+  background-color: var(--color-gray-100);
+  cursor: default;
+}
+
+/* Success state */
+.ui-input--success {
+  border-color: var(--color-success);
+}
+
+.ui-input--success:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Error state */
+.ui-input--error {
+  border-color: var(--color-error);
+}
+
+.ui-input--error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Warning state */
+.ui-input--warning {
+  border-color: var(--color-warning);
+}
+
+.ui-input--warning:focus {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+/* ========================================
+   TEXTAREA - Multi-line input
+   ====================================== */
+
+.ui-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: var(--space-3);
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  resize: vertical;
+}
+
+.ui-textarea::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.ui-textarea:hover:not(:disabled) {
+  border-color: var(--color-border);
+}
+
+.ui-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1);
+}
+
+.ui-textarea:disabled {
+  background-color: var(--color-gray-100);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ========================================
+   SELECT - Dropdown select
+   ====================================== */
+
+.ui-select,
+.ui-select-multiple {
+  width: 100%;
+  height: 44px;
+  padding: 0 var(--space-3);
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--space-3) center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: calc(var(--space-3) + 1.5em);
+}
+
+.ui-select-multiple {
+  height: auto;
+  padding: var(--space-2) var(--space-3);
+}
+
+.ui-select:hover:not(:disabled),
+.ui-select-multiple:hover:not(:disabled) {
+  border-color: var(--color-border);
+}
+
+.ui-select:focus,
+.ui-select-multiple:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1);
+}
+
+.ui-select:disabled,
+.ui-select-multiple:disabled {
+  background-color: var(--color-gray-100);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ========================================
+   CHECKBOX - Checkbox input
+   ====================================== */
+
+.ui-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ui-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.ui-checkbox {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  padding: 0;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-checkbox:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.ui-checkbox:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 20 20'%3e%3cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3e%3c/svg%3e");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.ui-checkbox:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ui-checkbox:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1);
+}
+
+/* ========================================
+   RADIO - Radio button input
+   ====================================== */
+
+.ui-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ui-radio-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.ui-radio {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  padding: 0;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background-color: var(--color-white);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  appearance: none;
+}
+
+.ui-radio:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.ui-radio:checked {
+  border-color: var(--color-primary);
+  background-image: radial-gradient(circle, var(--color-primary) 30%, transparent 30%);
+}
+
+.ui-radio:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ui-radio:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1);
+}
+
+/* ========================================
+   ERROR TEXT - Error message
+   ====================================== */
+
+.ui-error-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ========================================
+   HELP TEXT - Helper/hint text
+   ====================================== */
+
+.ui-help-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* ========================================
+   CHARACTER COUNT - Show input character count
+   ====================================== */
+
+.ui-char-count {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-align: right;
+  margin-top: var(--space-1);
+}
+
+.ui-char-count--warning {
+  color: var(--color-warning);
+}
+
+.ui-char-count--error {
+  color: var(--color-error);
+}
+
+/* ========================================
+   INPUT ADDON - Input with prefix/suffix
+   ====================================== */
+
+.ui-input-addon {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.ui-input-addon:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1);
+}
+
+.ui-input-addon--prefix,
+.ui-input-addon--suffix {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  background-color: var(--color-gray-50);
+  border-right: 1px solid var(--color-border);
+}
+
+.ui-input-addon--suffix {
+  border-right: none;
+  border-left: 1px solid var(--color-border);
+  order: 2;
+}
+
+.ui-input-addon input {
+  flex: 1;
+  border: none;
+  padding: 0 var(--space-3);
+  height: 40px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ====================================== */
+
+@media (max-width: 768px) {
+  .ui-form-group {
+    margin-bottom: var(--space-4);
+  }
+
+  .ui-input,
+  .ui-select,
+  .ui-textarea {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ====================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-input,
+  .ui-textarea,
+  .ui-select,
+  .ui-checkbox,
+  .ui-radio {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .ui-input,
+  .ui-textarea,
+  .ui-select {
+    border-width: 2px;
+  }
+
+  .ui-checkbox,
+  .ui-radio {
+    border-width: 2px;
+  }
+}

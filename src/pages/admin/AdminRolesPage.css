@@ -1,0 +1,107 @@
+@import url('./AdminCrudPages.css');
+
+.admin-roles-hero,
+.admin-roles-card {
+  border: 1px solid rgba(10, 122, 62, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.admin-roles-hero {
+  padding: 1.5rem;
+}
+
+.crud-page-badge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 0.55rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(10, 122, 62, 0.12);
+  color: var(--color-primary-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.crud-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.crud-header-title-row h1 {
+  margin: 0;
+}
+
+.crud-header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(10, 122, 62, 0.12);
+  color: var(--color-primary);
+}
+
+.admin-roles-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.admin-roles-empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: #888;
+}
+
+.admin-roles-col-id {
+  width: 60px;
+}
+
+.admin-roles-col-perm {
+  width: 100px;
+  text-align: center;
+}
+
+.admin-roles-name {
+  font-weight: 500;
+}
+
+.admin-roles-slug {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.admin-roles-perm-chip {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.admin-roles-perm-chip--empty {
+  background: #f3f4f6;
+  color: var(--color-text-disabled);
+}
+
+.admin-roles-perm-chip--active {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .admin-roles-hero {
+    padding: 1rem;
+  }
+
+  .admin-roles-toolbar {
+    width: 100%;
+  }
+}

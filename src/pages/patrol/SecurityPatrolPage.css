@@ -1,0 +1,341 @@
+.patrol-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.patrol-page .hero-card {
+  background: linear-gradient(135deg, var(--hero-bg-start), var(--hero-bg-end));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 14px 34px rgba(10, 122, 62, 0.16);
+  color: var(--color-white);
+  padding: 2.5rem;
+}
+
+[data-theme='dark'] .patrol-page .hero-card {
+  background: linear-gradient(135deg, var(--hero-bg-start), var(--hero-bg-end));
+}
+
+.patrol-page .hero-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 14px 34px rgba(10, 122, 62, 0.16);
+  transform: none;
+}
+
+.patrol-page .hero-card-inner {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.patrol-page .hero-content {
+  min-width: 0;
+}
+
+.patrol-page .hero-badge {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  color: var(--color-white);
+  display: inline-flex;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  gap: 0.5rem;
+  letter-spacing: 0;
+  margin-bottom: 1rem;
+  padding: 0.45rem 0.85rem;
+  text-transform: uppercase;
+}
+
+.patrol-page .hero-title {
+  color: var(--color-white);
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.75rem, 2.4vw, 2.4rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+  line-height: 1.15;
+  margin: 0 0 0.65rem;
+}
+
+.patrol-page .hero-subtitle {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: var(--font-size-md);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 58ch;
+}
+
+.patrol-page .hero-actions {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+.patrol-page .hero-actions .ui-button,
+.patrol-page .hero-actions button {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-bold);
+}
+
+.patrol-page .hero-actions .ui-button:hover:not(:disabled),
+.patrol-page .hero-actions button:hover:not(:disabled) {
+  background: var(--color-surface-soft);
+  border-color: var(--color-surface-soft);
+  color: var(--color-primary-dark);
+}
+
+.patrol-status-card,
+.patrol-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 12px;
+  background: var(--color-white, #ffffff);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.08));
+}
+
+.patrol-status-card p,
+.patrol-status-card span,
+.patrol-summary-card span {
+  margin: 0;
+  color: var(--color-text-secondary, #64748b);
+  font-size: 0.85rem;
+}
+
+.patrol-status-card strong,
+.patrol-summary-card strong {
+  display: block;
+  color: var(--color-text-primary, #0f172a);
+  font-size: 1.35rem;
+}
+
+.patrol-scan-card,
+.patrol-form-card,
+.patrol-checkpoint-card,
+.patrol-log-card {
+  padding: 1.25rem;
+}
+
+.patrol-video-frame {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #111827;
+}
+
+.patrol-video-frame video {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+}
+
+.patrol-video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #ffffff;
+}
+
+.patrol-manual-panel {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.patrol-manual-panel h2,
+.patrol-card-heading h2,
+.patrol-section-title h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--color-text-primary, #0f172a);
+}
+
+.patrol-manual-panel p {
+  margin: 0.25rem 0 0;
+  color: var(--color-text-secondary, #64748b);
+}
+
+.patrol-manual-panel textarea,
+.patrol-manual-form input,
+.patrol-form-grid input,
+.patrol-form-grid select {
+  width: 100%;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  background: #ffffff;
+  color: var(--color-text-primary, #0f172a);
+}
+
+.patrol-manual-panel textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.patrol-manual-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+}
+
+.patrol-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.patrol-card-heading,
+.patrol-section-title,
+.patrol-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.patrol-section-title {
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.patrol-section-title span {
+  color: var(--color-text-secondary, #64748b);
+  font-size: 0.85rem;
+}
+
+.patrol-form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.patrol-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  gap: 1rem;
+}
+
+.patrol-checkpoint-list,
+.patrol-scan-list {
+  min-width: 0;
+}
+
+.patrol-checkpoint-card {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.patrol-checkpoint-card img {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #e5e7eb);
+}
+
+.patrol-checkpoint-info {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.patrol-checkpoint-info h3,
+.patrol-log-card h3 {
+  margin: 0;
+  color: var(--color-text-primary, #0f172a);
+}
+
+.patrol-checkpoint-info p,
+.patrol-log-card p,
+.patrol-checkpoint-info span,
+.patrol-log-card span,
+.patrol-checkpoint-info small {
+  margin: 0;
+  color: var(--color-text-secondary, #64748b);
+}
+
+.patrol-checkpoint-info code {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 0.5rem;
+  color: #334155;
+}
+
+.patrol-log-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.patrol-status-badge {
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+}
+
+.patrol-status-on_time {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.patrol-status-outside_window {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+@media (max-width: 980px) {
+  .patrol-page .hero-card {
+    padding: 1.5rem;
+  }
+
+  .patrol-page .hero-card-inner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .patrol-page .hero-actions,
+  .patrol-page .hero-actions .ui-button,
+  .patrol-page .hero-actions button {
+    width: 100%;
+  }
+
+  .patrol-summary-grid,
+  .patrol-form-grid,
+  .patrol-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .patrol-checkpoint-card {
+    grid-template-columns: 1fr;
+  }
+
+  .patrol-checkpoint-card img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .patrol-manual-form {
+    grid-template-columns: 1fr;
+  }
+}

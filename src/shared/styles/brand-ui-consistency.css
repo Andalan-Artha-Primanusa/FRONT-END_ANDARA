@@ -1,0 +1,427 @@
+/* Shared visual layer for every authenticated web feature.
+   This keeps legacy modules visually aligned with the current green/white
+   product language without changing their route, label, or data source. */
+
+:root {
+  --brand-surface: #ffffff;
+  --brand-background: #f7f9f8;
+  --brand-border: #dde5e2;
+  --brand-border-soft: #e8f5ec;
+  --brand-green: #0a7a3e;
+  --brand-green-dark: #075b2c;
+  --brand-green-soft: #f3faf5;
+  --brand-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --brand-shadow-hover: 0 10px 24px rgba(10, 122, 62, 0.1);
+}
+
+/* All authenticated pages use the same calm canvas and spacing. */
+body .dashboard-content {
+  background: var(--brand-background);
+}
+
+body .dashboard-content .crud-page,
+body .dashboard-content .page-layout {
+  color: var(--color-text-primary);
+}
+
+/* Legacy cards and table cards share the same surface as the newer modules. */
+body .dashboard-content :is(
+  .ui-card,
+  .analytics-title-card,
+  .control-card,
+  .control-section-card,
+  .table-card,
+  .data-table-card,
+  .crud-card,
+  .crud-table-card,
+  .workforce-table-card,
+  .profiles-table-card,
+  .payroll-table-card,
+  .leave-card,
+  .employee-detail-card,
+  .section-table-card
+) {
+  background: var(--brand-surface) !important;
+  border: 1px solid var(--brand-border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--brand-shadow) !important;
+}
+
+body .dashboard-content :is(
+  .ui-card,
+  .analytics-title-card,
+  .control-card,
+  .control-section-card,
+  .table-card,
+  .data-table-card,
+  .crud-card,
+  .crud-table-card,
+  .workforce-table-card,
+  .profiles-table-card,
+  .payroll-table-card,
+  .leave-card,
+  .employee-detail-card,
+  .section-table-card
+):hover {
+  border-color: rgba(10, 122, 62, 0.28) !important;
+  box-shadow: var(--brand-shadow-hover) !important;
+}
+
+/* Keep title blocks consistent without changing their content. */
+body .dashboard-content :is(.analytics-title-card, .table-header-bar) {
+  padding: 1.25rem 1.5rem !important;
+}
+
+body .dashboard-content :is(
+  .analytics-title,
+  .analytics-title-card h2,
+  .analytics-title-card h3,
+  .table-header-bar h2,
+  .table-header-bar h3,
+  .section-table-header h2,
+  .kpi-table-header h2
+) {
+  color: var(--color-text-primary) !important;
+  font-weight: 700;
+}
+
+body .dashboard-content :is(
+  .analytics-subtitle,
+  .analytics-title-card p,
+  .table-header-bar p,
+  .table-header-bar .table-count,
+  .section-table-header p,
+  .kpi-table-header p
+) {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Every list surface gets the same horizontal-scroll behavior. */
+body .dashboard-content :is(
+  .wuw-table-area,
+  .table-area,
+  .table-wrap,
+  .crud-table-wrap,
+  .profiles-table-wrap,
+  .payroll-table-wrap,
+  .leave-table-wrap,
+  .ess-table-wrap,
+  .ui-table-overflow,
+  .data-table-wrapper,
+  .payroll-table-wrapper,
+  .payroll-approve-table-wrap,
+  .table-wrapper,
+  .page-table-wrapper
+) {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  background: var(--brand-surface);
+}
+
+/* Legacy controls use the same field geometry as the current forms. */
+body .dashboard-content :is(
+  .control-select,
+  .sort-select,
+  .filter-select,
+  .filter-select-premium,
+  .crud-input,
+  .form-input,
+  .form-field input,
+  .form-field select,
+  .form-field textarea
+) {
+  border-color: var(--brand-border) !important;
+  border-radius: 10px !important;
+  background: var(--brand-surface) !important;
+  color: var(--color-text-primary) !important;
+}
+
+body .dashboard-content :is(
+  .control-select,
+  .sort-select,
+  .filter-select,
+  .filter-select-premium,
+  .crud-input,
+  .form-input,
+  .form-field input,
+  .form-field select,
+  .form-field textarea
+):focus {
+  border-color: var(--brand-green) !important;
+  box-shadow: 0 0 0 3px rgba(10, 122, 62, 0.1) !important;
+}
+
+/* Navigation tabs and filter controls follow the same green active state. */
+body .dashboard-content :is(.elyra-tab.active, .segmented-btn.active, .tab-button.active, .filter-btn-rounded.active) {
+  background: var(--brand-green) !important;
+  border-color: var(--brand-green) !important;
+  color: #ffffff !important;
+}
+
+body .dashboard-content :is(.elyra-tab:hover, .segmented-btn:hover, .tab-button:hover, .filter-btn-rounded:hover) {
+  color: var(--brand-green-dark) !important;
+  background: var(--brand-green-soft) !important;
+}
+
+/* Page tabs are not primary actions: only the selected tab is filled. */
+body .dashboard-content .andalan-mobile-tab {
+  min-height: 40px !important;
+  padding: 0 16px !important;
+  border: 1px solid var(--brand-border) !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  color: var(--color-text-secondary) !important;
+  box-shadow: none !important;
+}
+
+body .dashboard-content .andalan-mobile-tab:hover:not(:disabled) {
+  background: var(--brand-green-soft) !important;
+  border-color: rgba(10, 122, 62, 0.35) !important;
+  color: var(--brand-green-dark) !important;
+}
+
+body .dashboard-content .andalan-mobile-tab.active,
+body .dashboard-content .andalan-mobile-tab.active:hover:not(:disabled) {
+  background: var(--brand-green) !important;
+  border-color: var(--brand-green) !important;
+  color: #ffffff !important;
+  box-shadow: 0 5px 12px rgba(10, 122, 62, 0.14) !important;
+}
+
+/* One Create/primary button geometry across legacy and newer pages. */
+body .dashboard-content :is(
+  .btn-primary,
+  .btn-success,
+  .ui-button--primary,
+  .andalan-mobile-create-button,
+  .andalan-kpi-primary-button,
+  .andalan-kpi-action-button,
+  .andalan-workforce-primary
+) {
+  min-height: 40px !important;
+  padding: 0 16px !important;
+  border: 1px solid var(--brand-green) !important;
+  border-radius: 10px !important;
+  background: var(--brand-green) !important;
+  color: #ffffff !important;
+  box-shadow: 0 5px 12px rgba(10, 122, 62, 0.14) !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+body .dashboard-content :is(
+  .btn-primary,
+  .btn-success,
+  .ui-button--primary,
+  .andalan-mobile-create-button,
+  .andalan-kpi-primary-button,
+  .andalan-kpi-action-button,
+  .andalan-workforce-primary
+):hover:not(:disabled) {
+  background: var(--brand-green-dark) !important;
+  border-color: var(--brand-green-dark) !important;
+}
+
+/* Secondary/refresh controls have one visible outline treatment. */
+body .dashboard-content :is(
+  .btn-outline,
+  .btn-secondary,
+  .ui-button--secondary,
+  .andalan-kpi-secondary-button,
+  .andalan-workforce-cancel
+) {
+  min-height: 40px !important;
+  padding: 0 16px !important;
+  border: 1px solid var(--brand-green) !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  color: var(--brand-green-dark) !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+body .dashboard-content :is(
+  .btn-outline,
+  .btn-secondary,
+  .ui-button--secondary,
+  .andalan-kpi-secondary-button,
+  .andalan-workforce-cancel
+):hover:not(:disabled) {
+  background: var(--brand-green-soft) !important;
+  border-color: var(--brand-green-dark) !important;
+  color: var(--brand-green-dark) !important;
+}
+
+/* All table icon actions use the same 34px touch target. */
+body .dashboard-content :is(
+  .action-btn,
+  .btn-icon,
+  .andalan-kpi-icon-button,
+  .uni-action-btn,
+  .payroll-table-action-btn
+) {
+  width: 34px !important;
+  min-width: 34px !important;
+  height: 34px !important;
+  min-height: 34px !important;
+  padding: 0 !important;
+  border-radius: 10px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+body .dashboard-content :is(.action-btn-group, .andalan-kpi-row-actions, .andalan-workforce-row-actions, .andalan-workforce-actions) {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 6px !important;
+  flex-wrap: wrap;
+}
+
+body .dashboard-content :is(
+  .action-btn-edit,
+  .action-btn-view,
+  .action-btn-secondary,
+  .uni-action-edit,
+  .uni-action-view
+) {
+  background: var(--brand-green-soft) !important;
+  border: 1px solid rgba(10, 122, 62, 0.16) !important;
+  color: var(--brand-green-dark) !important;
+}
+
+body .dashboard-content :is(
+  .action-btn-edit,
+  .action-btn-view,
+  .uni-action-edit,
+  .uni-action-view
+):hover:not(:disabled) {
+  background: var(--brand-green) !important;
+  border-color: var(--brand-green) !important;
+  color: #ffffff !important;
+}
+
+body .dashboard-content :is(
+  .action-btn-delete,
+  .action-btn-reject,
+  .action-btn-danger,
+  .btn-icon--red,
+  .andalan-kpi-delete-button,
+  .uni-action-delete,
+  .uni-action-reject
+) {
+  background: #fde8e8 !important;
+  border: 1px solid rgba(184, 50, 46, 0.16) !important;
+  color: #b8322e !important;
+}
+
+body .dashboard-content :is(
+  .action-btn-delete,
+  .action-btn-reject,
+  .action-btn-danger,
+  .btn-icon--red,
+  .andalan-kpi-delete-button,
+  .uni-action-delete,
+  .uni-action-reject
+):hover:not(:disabled) {
+  background: #b8322e !important;
+  border-color: #b8322e !important;
+  color: #ffffff !important;
+}
+
+body .dashboard-content .andalan-kpi-icon-button {
+  background: var(--brand-green-soft) !important;
+  border: 1px solid rgba(10, 122, 62, 0.16) !important;
+  color: var(--brand-green-dark) !important;
+}
+
+body .dashboard-content .andalan-kpi-icon-button:hover:not(:disabled) {
+  background: var(--brand-green) !important;
+  border-color: var(--brand-green) !important;
+  color: #ffffff !important;
+}
+
+body .dashboard-content .andalan-kpi-delete-button,
+body .dashboard-content .andalan-kpi-delete-button:hover:not(:disabled) {
+  background: #fde8e8 !important;
+  border-color: rgba(184, 50, 46, 0.16) !important;
+  color: #b8322e !important;
+}
+
+body .dashboard-content .andalan-kpi-delete-button:hover:not(:disabled) {
+  background: #b8322e !important;
+  border-color: #b8322e !important;
+  color: #ffffff !important;
+}
+
+body .dashboard-content :is(.andalan-workforce-approve, .action-btn-success, .action-btn-approve, .uni-action-approve) {
+  min-height: 34px !important;
+  padding: 0 10px !important;
+  border: 1px solid rgba(10, 122, 62, 0.16) !important;
+  border-radius: 10px !important;
+  background: var(--brand-green-soft) !important;
+  color: var(--brand-green-dark) !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-weight: 700 !important;
+}
+
+body .dashboard-content :is(.andalan-workforce-reject, .btn-clear-filter) {
+  min-height: 34px !important;
+  padding: 0 10px !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+body .dashboard-content .btn-clear-filter {
+  border: 1px solid var(--brand-green) !important;
+  background: var(--brand-green) !important;
+  color: #ffffff !important;
+}
+
+body .dashboard-content .btn-clear-filter:hover:not(:disabled) {
+  background: var(--brand-green-dark) !important;
+  border-color: var(--brand-green-dark) !important;
+}
+
+/* Pagination buttons are also kept on the same 34px grid. */
+body .dashboard-content :is(.pagination-btn, .pagination-page-btn, .pagination-button, .page-btn) {
+  min-width: 34px !important;
+  height: 34px !important;
+  min-height: 34px !important;
+  padding: 0 10px !important;
+  border-radius: 10px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+body .dashboard-content :is(.pagination-btn.active, .pagination-page-btn.active, .pagination-button.active, .page-btn.active) {
+  background: var(--brand-green) !important;
+  border-color: var(--brand-green) !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  body .dashboard-content .crud-page {
+    padding: 1rem;
+  }
+
+  body .dashboard-content :is(.analytics-title-card, .table-header-bar) {
+    padding: 1rem !important;
+  }
+}

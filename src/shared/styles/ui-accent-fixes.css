@@ -1,0 +1,49 @@
+/* ============================================================
+   UI ACCENT FIXES — Tosca theme consistency overlay
+   Remaps recurring violet/indigo accent chips across summary &
+   metric cards (employee|leave|payroll|asset|attendance|training|
+   reimbursement|report|kpi) that previously used #8b5cf6/#7c3aed,
+   to the white + tosca palette tokens.
+   Loaded as the final accent layer for the active theme.
+   ============================================================ */
+
+/* ---- Value text accents (violet -> tosca-dark for AA contrast) ---- */
+[class$="-value-purple"] {
+  color: var(--color-primary-dark) !important;
+}
+
+/* ---- Summary icon chips (violet -> tosca) ---- */
+[class*="icon-purple"],
+[class*="icon--purple"],
+[class*="summary-icon--purple"],
+[class*="summary-icon.purple"] {
+  background: rgba(10, 122, 62, 0.14) !important;
+  color: var(--color-primary-dark) !important;
+  border-color: rgba(10, 122, 62, 0.18) !important;
+  box-shadow: none !important;
+}
+
+/* ---- KpiCards color accent ---- */
+.color-purple {
+  background: rgba(10, 122, 62, 0.14) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+/* ---- unified icon soft chip ---- */
+.uni-icon-purple-soft {
+  background: var(--color-primary-light) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+/* ---- Kpi/competency accent var ---- */
+[data-theme='light'] .kpi-page,
+[data-theme='light'] .competency-matrix-page {
+  --purple-color: var(--color-primary-dark);
+}
+
+/* ---- Reports chart/metric purple ---- */
+[data-theme='light'] {
+  --reports-purple: var(--color-primary-dark);
+  --chart-purple: var(--color-primary-dark);
+  --payroll-purple: var(--color-primary-dark);
+}

@@ -1,0 +1,147 @@
+.admin-notifications-page {
+  --notification-border: rgba(10, 122, 62, 0.14);
+  --notification-text: var(--color-text-primary);
+  --notification-muted: var(--color-text-secondary);
+}
+
+.notification-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.notification-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.notification-form-card {
+  overflow: hidden;
+}
+
+.notification-form-card .table-card-inner {
+  padding: 1.5rem;
+}
+
+.notification-form-header {
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.notification-form-header h3 {
+  color: var(--notification-text);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.notification-form-header p {
+  margin: 0.3rem 0 0;
+  color: var(--notification-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.notification-form-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-primary-light);
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.notification-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+.admin-notifications-page .crud-form {
+  gap: 0;
+}
+
+.admin-notifications-page .form-group {
+  gap: 0.45rem;
+}
+
+.admin-notifications-page .form-group label {
+  margin-bottom: 0;
+  color: var(--color-primary-dark);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+.admin-notifications-page .form-input {
+  min-height: 48px;
+  height: auto;
+  border: 1px solid var(--color-text-tertiary);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  color: var(--notification-text) !important;
+  font-size: 0.92rem;
+  font-weight: 600 !important;
+  line-height: 1.45;
+  background: var(--color-white) !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.admin-notifications-page .form-input::placeholder {
+  color: var(--color-text-tertiary);
+  font-weight: 600;
+  opacity: 1;
+}
+
+.admin-notifications-page select.form-input {
+  height: 48px;
+  padding: 0 2.4rem 0 0.9rem;
+  line-height: 48px;
+}
+
+.admin-notifications-page textarea.form-input {
+  min-height: 116px;
+  padding-top: 0.85rem;
+  resize: vertical;
+}
+
+.admin-notifications-page .form-actions {
+  margin-top: 1.35rem;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1180px) {
+  .notification-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .notification-form-header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .notification-form-card .table-card-inner {
+    padding: 1rem;
+  }
+
+  .notification-form-badge {
+    white-space: normal;
+  }
+
+  .admin-notifications-page .form-actions .ui-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

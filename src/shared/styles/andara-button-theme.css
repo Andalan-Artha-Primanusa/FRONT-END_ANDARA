@@ -1,0 +1,66 @@
+/* ANDARA button theme: action buttons use the primary green consistently. */
+:root {
+  --andara-button-green: #0a7a3e;
+  --andara-button-green-hover: #066330;
+  --andara-button-green-disabled: #78ad8c;
+}
+
+/* Header/menu controls are navigation chrome, not page actions. */
+button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn),
+a.btn-primary,
+a.btn-secondary,
+a.btn-outline,
+a.btn-success,
+a.btn-danger,
+a.btn-warning {
+  background: var(--andara-button-green) !important;
+  background-color: var(--andara-button-green) !important;
+  border-color: var(--andara-button-green) !important;
+  color: #ffffff !important;
+}
+
+button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn):hover:not(:disabled),
+a.btn-primary:hover,
+a.btn-secondary:hover,
+a.btn-outline:hover,
+a.btn-success:hover,
+a.btn-danger:hover,
+a.btn-warning:hover {
+  background: var(--andara-button-green-hover) !important;
+  background-color: var(--andara-button-green-hover) !important;
+  border-color: var(--andara-button-green-hover) !important;
+  color: #ffffff !important;
+}
+
+button:not(.icon-button):not(.dropdown-item):disabled,
+a.btn-primary[aria-disabled='true'],
+a.btn-secondary[aria-disabled='true'],
+a.btn-outline[aria-disabled='true'],
+a.btn-success[aria-disabled='true'],
+a.btn-danger[aria-disabled='true'],
+a.btn-warning[aria-disabled='true'] {
+  background: var(--andara-button-green-disabled) !important;
+  background-color: var(--andara-button-green-disabled) !important;
+  border-color: var(--andara-button-green-disabled) !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn) svg,
+button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn) *,
+a.btn-primary svg,
+a.btn-secondary svg,
+a.btn-outline svg,
+a.btn-success svg,
+a.btn-danger svg,
+a.btn-warning svg {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+/* Keep form controls and cards white; only actual buttons are themed above. */
+button input,
+button select,
+button textarea {
+  background: transparent !important;
+}

@@ -1,0 +1,108 @@
+/* ============================================
+   ALERT COMPONENTS
+   ============================================ */
+
+.ui-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  animation: slideDown 0.25s ease-out;
+  margin-bottom: 1rem;
+  border: 1px solid;
+}
+
+.ui-alert-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.ui-alert-message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.ui-alert-close {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+  color: inherit;
+  opacity: 0.5;
+}
+
+.ui-alert-close:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Success */
+.ui-alert-success {
+  background-color: var(--color-success-light);
+  border-color: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.ui-alert-success .ui-alert-icon {
+  color: var(--color-success);
+}
+
+/* Error */
+.ui-alert-error {
+  background-color: var(--color-error-light);
+  border-color: var(--color-error-light);
+  color: var(--color-error-dark);
+}
+
+.ui-alert-error .ui-alert-icon {
+  color: var(--color-error);
+}
+
+/* Info */
+.ui-alert-info {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.ui-alert-info .ui-alert-icon {
+  color: var(--color-primary);
+}
+
+/* Warning */
+.ui-alert-warning {
+  background-color: var(--color-warning-light);
+  border-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.ui-alert-warning .ui-alert-icon {
+  color: var(--color-warning);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .ui-alert {
+    padding: 0.75rem;
+    font-size: var(--font-size-xs);
+    gap: 0.5rem;
+  }
+  .ui-alert-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

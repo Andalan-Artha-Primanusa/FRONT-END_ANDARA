@@ -1,0 +1,73 @@
+.ui-card {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--gray-200);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ui-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-blue);
+  transform: translateY(-4px);
+}
+
+.ui-card.hero-card {
+  background: linear-gradient(135deg, var(--hero-bg-start), var(--hero-bg-end)) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: var(--color-white);
+  box-shadow: 0 14px 30px rgba(10, 122, 62, 0.18);
+}
+
+[data-theme='dark'] .ui-card.hero-card {
+  background: linear-gradient(135deg, var(--hero-bg-start), var(--hero-bg-end)) !important;
+}
+
+.ui-card.hero-card:hover {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 18px 42px rgba(10, 122, 62, 0.24);
+}
+
+.ui-card.hero-card .hero-badge {
+  color: var(--color-white) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+.ui-card.hero-card .hero-title {
+  color: var(--color-white) !important;
+}
+
+.ui-card.hero-card .hero-subtitle {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.ui-card.hero-card .hero-actions .ui-button,
+.ui-card.hero-card .hero-actions button,
+.ui-card.hero-card .btn-outline,
+.ui-card.hero-card .btn-primary {
+  background: var(--color-white) !important;
+  border-color: transparent !important;
+  color: var(--color-primary-dark) !important;
+}
+
+.ui-card.hero-card .hero-actions .ui-button *,
+.ui-card.hero-card .hero-actions button *,
+.ui-card.hero-card .btn-outline *,
+.ui-card.hero-card .btn-primary *,
+.ui-card.hero-card .hero-actions .ui-button svg,
+.ui-card.hero-card .hero-actions button svg,
+.ui-card.hero-card .btn-outline svg,
+.ui-card.hero-card .btn-primary svg {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+.ui-card.hero-card .hero-actions .ui-button:hover:not(:disabled),
+.ui-card.hero-card .hero-actions button:hover:not(:disabled),
+.ui-card.hero-card .btn-outline:hover:not(:disabled),
+.ui-card.hero-card .btn-primary:hover:not(:disabled) {
+  background: #ffffff !important;
+  color: var(--hero-bg-end) !important;
+}

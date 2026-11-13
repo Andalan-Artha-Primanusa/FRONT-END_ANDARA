@@ -1,0 +1,248 @@
+/* ========================================
+   BADGE COMPONENT STYLES
+   Design System: White + Blue Theme
+   Status: Production Ready
+   ======================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: 4px 8px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  user-select: none;
+  transition: all var(--transition-normal);
+}
+
+/* ========================================
+   BADGE VARIANTS (COLOR)
+   ====================================== */
+
+/* Primary Blue / Default Theme */
+.badge.badge-primary {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.badge.badge-primary-solid {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+/* Success Green */
+.badge.badge-success {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.badge.badge-success-solid {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+/* Error Red */
+.badge.badge-error {
+  background-color: var(--color-error-light);
+  color: var(--color-error);
+}
+
+.badge.badge-error-solid {
+  background-color: var(--color-error-light);
+  color: var(--color-error);
+}
+
+/* Warning Yellow */
+.badge.badge-warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.badge.badge-warning-solid {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+/* Info / Draft / Default */
+.badge.badge-info, .badge.badge-default {
+  background-color: var(--color-background);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.badge.badge-info-solid, .badge.badge-default-solid {
+  background-color: var(--color-background);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+/* ========================================
+   BADGE SIZES
+   ====================================== */
+
+.badge.badge-sm {
+  padding: 2px 6px;
+  font-size: 10px;
+}
+
+.badge.badge-md {
+  padding: 4px 8px;
+  font-size: var(--font-size-xs);
+}
+
+.badge.badge-lg {
+  padding: 6px 12px;
+  font-size: var(--font-size-sm);
+}
+
+/* ========================================
+   BADGE SHAPES
+   ====================================== */
+
+.badge.badge-pill {
+  border-radius: var(--radius-full);
+}
+
+.badge.badge-rounded {
+  border-radius: var(--radius-md);
+}
+
+/* ========================================
+   BADGE ICONS
+   ====================================== */
+
+.badge-icon {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   BADGE STATES
+   ====================================== */
+
+.badge.badge-dot {
+  padding: 0 8px;
+}
+
+.badge.badge-dot::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+  margin-right: 6px;
+}
+
+.badge.badge-outlined {
+  border: 1px solid currentColor;
+  background-color: transparent;
+}
+
+/* ========================================
+   BADGE INTERACTIVE
+   ====================================== */
+
+.badge.badge-closeable {
+  padding-right: 4px;
+}
+
+.badge-close-button {
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  transition: background-color var(--transition-normal);
+  color: currentColor;
+}
+
+.badge-close-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   BADGE ANIMATIONS
+   ====================================== */
+
+.badge-pulse {
+  animation: badge-pulse 2s infinite;
+}
+
+@keyframes badge-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   BADGE GROUPS
+   ====================================== */
+
+.badge-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.badge-group.badge-group-vertical {
+  flex-direction: column;
+}
+
+/* ========================================
+   RESPONSIVE
+   ====================================== */
+
+@media (max-width: 480px) {
+  .badge {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+
+  .badge.badge-lg {
+    padding: 4px 8px;
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ====================================== */
+
+.badge:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .badge {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    animation: none;
+  }
+
+  .badge-close-button:hover {
+    background-color: transparent;
+  }
+}

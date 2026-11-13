@@ -1,0 +1,568 @@
+/* Unified table style for all dashboard pages */
+:root {
+  --submenu-table-border: rgba(10, 122, 62, 0.16);
+  --submenu-table-border-soft: rgba(148, 163, 184, 0.2);
+  --submenu-table-head-bg: #f8fafc;
+  --submenu-table-head-divider: #dde5e2;
+  --submenu-table-head-text: #66736f;
+  --submenu-table-row-even: #ffffff;
+  --submenu-table-row-hover: #f3faf5;
+  --submenu-table-row-focus: #e8f5ec;
+  --submenu-table-row-selected: #E8F5EC;
+  --submenu-table-text: #18201e;
+  --submenu-table-muted: #66736f;
+  --submenu-table-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --submenu-table-shadow-hover: 0 10px 24px rgba(10, 122, 62, 0.1);
+}
+
+body :is(
+  .table-wrap,
+  .crud-table-wrap,
+  .profiles-table-wrap,
+  .payroll-table-wrap,
+  .leave-table-wrap,
+  .ess-table-wrap,
+  .ui-table-overflow,
+  .data-table-wrapper,
+  .payroll-table-wrapper,
+  .payroll-approve-table-wrap,
+  .table-wrapper
+) {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--submenu-table-border);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: var(--submenu-table-shadow);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(10, 122, 62, 0.35) rgba(148, 163, 184, 0.14);
+  transition: box-shadow 180ms ease, border-color 180ms ease;
+}
+
+body :is(
+  .table-wrap,
+  .crud-table-wrap,
+  .profiles-table-wrap,
+  .payroll-table-wrap,
+  .leave-table-wrap,
+  .ess-table-wrap,
+  .ui-table-overflow,
+  .data-table-wrapper,
+  .payroll-table-wrapper,
+  .payroll-approve-table-wrap,
+  .table-wrapper
+):hover {
+  border-color: rgba(10, 122, 62, 0.24);
+  box-shadow: var(--submenu-table-shadow-hover);
+}
+
+body :is(
+  .table-wrap,
+  .crud-table-wrap,
+  .profiles-table-wrap,
+  .payroll-table-wrap,
+  .leave-table-wrap,
+  .ess-table-wrap,
+  .ui-table-overflow,
+  .data-table-wrapper,
+  .payroll-table-wrapper,
+  .payroll-approve-table-wrap,
+  .table-wrapper
+)::-webkit-scrollbar {
+  height: 8px;
+}
+
+body :is(
+  .table-wrap,
+  .crud-table-wrap,
+  .profiles-table-wrap,
+  .payroll-table-wrap,
+  .leave-table-wrap,
+  .ess-table-wrap,
+  .ui-table-overflow,
+  .data-table-wrapper,
+  .payroll-table-wrapper,
+  .payroll-approve-table-wrap,
+  .table-wrapper
+)::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.14);
+  border-radius: 999px;
+}
+
+body :is(
+  .table-wrap,
+  .crud-table-wrap,
+  .profiles-table-wrap,
+  .payroll-table-wrap,
+  .leave-table-wrap,
+  .ess-table-wrap,
+  .ui-table-overflow,
+  .data-table-wrapper,
+  .payroll-table-wrapper,
+  .payroll-approve-table-wrap,
+  .table-wrapper
+)::-webkit-scrollbar-thumb {
+  background: rgba(10, 122, 62, 0.35);
+  border-radius: 999px;
+}
+
+body :is(
+  .table-wrap,
+  .crud-table-wrap,
+  .profiles-table-wrap,
+  .payroll-table-wrap,
+  .leave-table-wrap,
+  .ess-table-wrap,
+  .ui-table-overflow,
+  .data-table-wrapper,
+  .payroll-table-wrapper,
+  .payroll-approve-table-wrap,
+  .table-wrapper
+)::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 122, 62, 0.48);
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) {
+  width: 100%;
+  min-width: 760px;
+  margin: 0;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: transparent;
+  color: var(--submenu-table-text);
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > thead > tr > th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 0.9rem 1rem;
+  background: var(--submenu-table-head-bg);
+  color: var(--submenu-table-head-text);
+  border: 0;
+  border-bottom: 1px solid var(--submenu-table-head-divider);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > thead > tr > th:not(:last-child) {
+  border-right: 1px solid rgba(148, 163, 184, 0.34);
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > thead > tr > th:first-child {
+  border-top-left-radius: 14px;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > thead > tr > th:last-child {
+  border-top-right-radius: 14px;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > tbody > tr > td {
+  padding: 0.84rem 1rem;
+  border: 0;
+  border-bottom: 1px solid var(--submenu-table-border-soft);
+  background: #ffffff;
+  color: var(--submenu-table-text);
+  vertical-align: middle;
+  line-height: 1.45;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > tbody > tr:nth-child(even) > td {
+  background: var(--submenu-table-row-even);
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > tbody > tr:hover > td {
+  background: var(--submenu-table-row-hover);
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > tbody > tr:focus-within > td {
+  background: var(--submenu-table-row-focus);
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > tbody > tr.is-selected > td {
+  background: var(--submenu-table-row-selected);
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > tbody > tr:last-child > td {
+  border-bottom: 0;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) > tbody > tr > td:is([colspan], .submenu-table-empty, .table-empty, .cell-empty) {
+  text-align: center;
+  color: var(--submenu-table-muted);
+  padding: 2.25rem 1rem;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) :is(
+  .cell-id,
+  .data-table-cell-id,
+  .leave-table-id,
+  .ess-table-id
+) {
+  font-weight: 700;
+  color: #08776B;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) :is(.th-right, .text-right, .data-table-cell-number, .cell-amount, .table-cell-right) {
+  text-align: right;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) :is(.th-center, .text-center, .cell-center, .data-table-cell-center, .leave-table-actions, .table-cell-center) {
+  text-align: center;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) :is(.cell-actions, .table-actions, .payroll-table-actions) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) :is(.status-badge, .cell-tag) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 26px;
+  padding: 0.2rem 0.62rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(10, 122, 62, 0.12);
+}
+
+/* Softer table subtitle + header copy tone */
+body :is(
+  .table-header-bar .table-count,
+  .section-table-header p,
+  .kpi-table-header p,
+  .payroll-table-head-copy .chart-subtitle,
+  .ui-table-pagination .pagination-info
+) {
+  color: #64748b !important;
+  font-weight: 500;
+}
+
+body :is(
+  .table-header-bar h3,
+  .section-table-header h2,
+  .kpi-table-header h2,
+  .payroll-table-head-copy h2
+) {
+  color: #334155;
+}
+
+/* Unify icon tone + sizing around table areas */
+body :is(
+  .table-header-bar,
+  .section-table-header,
+  .kpi-table-header,
+  .payroll-table-header,
+  .table-wrap,
+  .crud-table-wrap,
+  .profiles-table-wrap,
+  .payroll-table-wrap,
+  .leave-table-wrap,
+  .ess-table-wrap,
+  .ui-table-overflow,
+  .payroll-table-wrapper
+) svg {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) :is(
+  .action-btn,
+  .table-action-btn,
+  .payroll-table-action-btn,
+  .table-action-button,
+  .ui-button
+) > svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.9;
+  flex-shrink: 0;
+}
+
+/* Keep icon source consistent by disabling CSS-generated symbol icons */
+body table:is(
+  .data-table,
+  .crud-table,
+  .ui-table,
+  .ess-table,
+  .profiles-table,
+  .payroll-table,
+  .leave-table,
+  .table
+) :is(
+  .status-pending,
+  .status-approved,
+  .status-active,
+  .status-rejected,
+  .status-inactive,
+  .status-cancelled,
+  .status-archived,
+  .status-processing,
+  .status-in-progress,
+  .leave-status-cancelled,
+  .payroll-status-paid,
+  .payroll-status-approved,
+  .payroll-status-pending,
+  .payroll-status-draft,
+  .payroll-status-rejected
+)::before {
+  content: none !important;
+  margin-right: 0 !important;
+}
+
+@media (max-width: 1024px) {
+  body table:is(
+    .data-table,
+    .crud-table,
+    .ui-table,
+    .ess-table,
+    .profiles-table,
+    .payroll-table,
+    .leave-table,
+    .table
+  ) {
+    min-width: 660px;
+  }
+
+  body table:is(
+    .data-table,
+    .crud-table,
+    .ui-table,
+    .ess-table,
+    .profiles-table,
+    .payroll-table,
+    .leave-table,
+    .table
+  ) > thead > tr > th,
+  body table:is(
+    .data-table,
+    .crud-table,
+    .ui-table,
+    .ess-table,
+    .profiles-table,
+    .payroll-table,
+    .leave-table,
+    .table
+  ) > tbody > tr > td {
+    padding: 0.75rem 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  body :is(
+    .table-wrap,
+    .crud-table-wrap,
+    .profiles-table-wrap,
+    .payroll-table-wrap,
+    .leave-table-wrap,
+    .ess-table-wrap,
+    .ui-table-overflow,
+    .data-table-wrapper,
+    .payroll-table-wrapper,
+    .payroll-approve-table-wrap,
+    .table-wrapper
+  ) {
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.1);
+  }
+
+  body table:is(
+    .data-table,
+    .crud-table,
+    .ui-table,
+    .ess-table,
+    .profiles-table,
+    .payroll-table,
+    .leave-table,
+    .table
+  ) {
+    min-width: 560px;
+  }
+
+  body table:is(
+    .data-table,
+    .crud-table,
+    .ui-table,
+    .ess-table,
+    .profiles-table,
+    .payroll-table,
+    .leave-table,
+    .table
+  ) > thead > tr > th {
+    font-size: 0.69rem;
+    letter-spacing: 0.05em;
+  }
+}
