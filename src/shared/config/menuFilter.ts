@@ -8,6 +8,32 @@ import { RBACUtils } from "@/shared/hooks/rbac";
 let cachePromise: Promise<string[]> | null = null;
 let treeCachePromise: Promise<MenuItem[]> | null = null;
 
+const PRESENTATION_MENU_FALLBACK: ApiMenuNode[] = [
+  { key: 'presentation.dashboard', label: 'Dashboard', icon: 'LayoutDashboard', path: '/dashboard' },
+  {
+    key: 'presentation.mobile', label: 'ANDARA Mobile', icon: 'Smartphone', path: '/andalan/mobile', children: [
+      { key: 'presentation.mobile.news', label: 'Berita', icon: 'Newspaper', path: '/andalan/mobile/news' },
+      { key: 'presentation.mobile.roster', label: 'Roster', icon: 'CalendarDays', path: '/andalan/mobile/roster' },
+      { key: 'presentation.mobile.leave', label: 'Cuti & Izin', icon: 'FileText', path: '/andalan/mobile/leave' },
+      { key: 'presentation.mobile.reimburse', label: 'Reimburse', icon: 'Wallet', path: '/andalan/mobile/reimburse' },
+      { key: 'presentation.mobile.trips', label: 'Perjalanan Dinas', icon: 'CalendarDays', path: '/andalan/mobile/trips' },
+    ],
+  },
+  { key: 'presentation.kpi', label: 'ANDARA KPI', icon: 'Target', path: '/andalan/kpi' },
+  {
+    key: 'presentation.workforce', label: 'ANDARA Workforce', icon: 'Briefcase', path: '/andalan/workforce/payroll', children: [
+      { key: 'presentation.workforce.payroll', label: 'Payroll', icon: 'Banknote', path: '/andalan/workforce/payroll' },
+      { key: 'presentation.workforce.training', label: 'Training', icon: 'GraduationCap', path: '/andalan/workforce/training' },
+      { key: 'presentation.workforce.assets', label: 'Asset', icon: 'Briefcase', path: '/andalan/workforce/assets' },
+      { key: 'presentation.workforce.overtime', label: 'Overtime', icon: 'Clock', path: '/andalan/workforce/overtime' },
+      { key: 'presentation.workforce.documents', label: 'Dokumen', icon: 'FileText', path: '/andalan/workforce/documents' },
+    ],
+  },
+];
+
+const collectMenuKeys = (items: { key: string; children?: { key: string; children?: any[] }[] }[]): string[] =>
+  items.flatMap((item) => [item.key, ...collectMenuKeys(item.children ?? [])]);
+
 const stripAdminKeys = (keys: string[]): string[] => {
   return keys;
 };
@@ -43,14 +69,17 @@ export const fetchAllowedMenuKeys = async (user: AuthUser | null = null): Promis
         const collectKeys = (items: PresentationMenuNode[]): string[] =>
           items.flatMap((item) => [item.key, ...collectKeys(item.children ?? [])]);
         const keys = collectKeys(presentation.data?.data ?? []);
-        useAuthStore.getState().setAllowedMenuKeys(keys);
+        const fallbackKeys = collectMenuKeys(PRESENTATION_MENU_FALLBACK);
+        const safeKeys = keys.length ? keys : fallbackKeys;
+        useAuthStore.getState().setAllowedMenuKeys(safeKeys);
         useAuthStore.getState().setMenuKeysLoaded(true);
-        return keys;
+        return safeKeys;
       } catch {
-        useAuthStore.getState().setAllowedMenuKeys([]);
+        const fallbackKeys = collectMenuKeys(PRESENTATION_MENU_FALLBACK);
+        useAuthStore.getState().setAllowedMenuKeys(fallbackKeys);
+        useAuthStore.getState().setMenuKeysLoaded(true);
+        return fallbackKeys;
       }
-      useAuthStore.getState().setMenuKeysLoaded(true);
-      return [];
     }
 
     // Sumber kebenaran = backend. Kedua request ini tidak saling bergantung,
@@ -100,8 +129,13 @@ export const clearMenuCache = () => {
 
 export const fetchUserMenuTree = async (user: AuthUser | null = null): Promise<MenuItem[]> => {
   if (!user?.roles?.length) {
-    const res = await api.get<{ data?: ApiMenuNode[] }>("/presentation/menus");
-    return mapApiMenuTree(Array.isArray(res.data?.data) ? res.data.data : []);
+    try {
+      const res = await api.get<{ data?: ApiMenuNode[] }>("/presentation/menus");
+      const nodes = Array.isArray(res.data?.data) && res.data.data.length ? res.data.data : PRESENTATION_MENU_FALLBACK;
+      return mapApiMenuTree(nodes);
+    } catch {
+      return mapApiMenuTree(PRESENTATION_MENU_FALLBACK);
+    }
   }
   if (treeCachePromise) return treeCachePromise;
 
