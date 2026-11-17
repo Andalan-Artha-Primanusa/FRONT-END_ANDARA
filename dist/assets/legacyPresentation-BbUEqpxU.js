@@ -1,0 +1,1 @@
+var e=()=>{if(typeof window>`u`||sessionStorage.getItem(`token`))return!1;try{let e=sessionStorage.getItem(`user`);if(!e)return!1;let t=JSON.parse(e);return(!Array.isArray(t.roles)||t.roles.length===0)&&(!Array.isArray(t.permissions)||t.permissions.length===0)}catch{return!1}};export{e as t};
