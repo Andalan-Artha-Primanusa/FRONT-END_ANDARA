@@ -20,6 +20,9 @@ const EmployeesPage = lazy(() => import("../../pages/employee/EmployeesPage"));
 const EmployeeDetailPage = lazy(() => import("../../pages/employee/EmployeeDetailPage"));
 const EmployeeCreatePage = lazy(() => import("../../pages/employee/EmployeeCreatePage"));
 const EmployeeEditPage = lazy(() => import("../../pages/employee/EmployeeEditPage"));
+const EmployeeDeletePage = lazy(() => import("../../pages/employee/EmployeeDeletePage"));
+const ResourceDeletePage = lazy(() => import("../../pages/shared/ResourceDeletePage"));
+const ResourceDetailPage = lazy(() => import("../../pages/shared/ResourceDetailPage"));
 const ProfilesPage = lazy(() => import("../../pages/profiles/ProfilesPage"));
 const AttendanceOverviewPage = lazy(() => import("../../pages/attendance/AttendanceOverviewPage"));
 const AttendanceCheckInPage = lazy(() => import("../../pages/attendance/AttendanceCheckInPage"));
@@ -150,6 +153,7 @@ export const router = createBrowserRouter([
       layoutRoute("/employees", <EmployeesPage />),
       layoutRoute("/employees/add", <MenuRouteGuard menuKey="workforce.employees"><EmployeeCreatePage /></MenuRouteGuard>),
       layoutRoute("/employees/update/:id", <MenuRouteGuard menuKey="workforce.employees"><EmployeeEditPage /></MenuRouteGuard>),
+      layoutRoute("/employees/:id/delete", <MenuRouteGuard menuKey="workforce.employees"><EmployeeDeletePage /></MenuRouteGuard>),
       layoutRoute("/employees/:id", <EmployeeDetailPage />),
       layoutRoute("/profiles", <ProfilesPage />),
       layoutRoute("/profiles/view/:id", <ProfilesPage />),
@@ -260,6 +264,18 @@ export const router = createBrowserRouter([
       layoutRoute("/locations", <MenuRouteGuard menuKey="admin.locations"><LocationsPage /></MenuRouteGuard>),
       layoutRoute("/locations/create", <MenuRouteGuard menuKey="admin.locations"><CreateLocationPage /></MenuRouteGuard>),
       layoutRoute("/locations/edit/:id", <MenuRouteGuard menuKey="admin.locations"><EditLocationPage /></MenuRouteGuard>),
+      layoutRoute("/locations/:id/delete", <MenuRouteGuard menuKey="admin.locations"><ResourceDeletePage resource="location" /></MenuRouteGuard>),
+      layoutRoute("/locations/:id", <MenuRouteGuard menuKey="admin.locations"><ResourceDetailPage resource="location" /></MenuRouteGuard>),
+      layoutRoute("/reimbursements/:id/delete", <MenuRouteGuard menuKey="compensation.reimbursement"><ResourceDeletePage resource="reimbursement" /></MenuRouteGuard>),
+      layoutRoute("/reimbursements/:id", <MenuRouteGuard menuKey="compensation.reimbursement"><ResourceDetailPage resource="reimbursement" /></MenuRouteGuard>),
+      layoutRoute("/leave/requests/:id/delete", <ResourceDeletePage resource="leave" />),
+      layoutRoute("/leave/requests/:id", <ResourceDetailPage resource="leave" />),
+      layoutRoute("/payroll/list/:id/delete", <MenuRouteGuard menuKey="compensation.payroll"><ResourceDeletePage resource="payroll" /></MenuRouteGuard>),
+      layoutRoute("/payroll/list/:id", <MenuRouteGuard menuKey="compensation.payroll"><ResourceDetailPage resource="payroll" /></MenuRouteGuard>),
+      layoutRoute("/training/programs/:id/delete", <MenuRouteGuard menuKey="performance-dev.training"><ResourceDeletePage resource="training" /></MenuRouteGuard>),
+      layoutRoute("/training/programs/:id", <MenuRouteGuard menuKey="performance-dev.training"><ResourceDetailPage resource="training" /></MenuRouteGuard>),
+      layoutRoute("/assets/:id/delete", <MenuRouteGuard menuKey="assets"><ResourceDeletePage resource="asset" /></MenuRouteGuard>),
+      layoutRoute("/assets/:id", <MenuRouteGuard menuKey="assets"><ResourceDetailPage resource="asset" /></MenuRouteGuard>),
       layoutRoute("/work-schedules", <MenuRouteGuard menuKey="admin.work-schedules"><WorkSchedulesPage /></MenuRouteGuard>),
       layoutRoute("/work-schedules/add", <MenuRouteGuard menuKey="admin.work-schedules"><WorkScheduleCreatePage /></MenuRouteGuard>),
       layoutRoute("/work-schedules/edit/:id", <MenuRouteGuard menuKey="admin.work-schedules"><WorkScheduleEditPage /></MenuRouteGuard>),

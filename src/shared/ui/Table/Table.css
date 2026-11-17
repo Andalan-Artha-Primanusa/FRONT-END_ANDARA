@@ -13,6 +13,8 @@
   background-color: var(--color-white);
   box-shadow: var(--shadow-sm);
   transition: box-shadow var(--transition-normal);
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
 .table-wrapper:hover {
@@ -31,9 +33,12 @@
    ====================================== */
 
 .table-header {
-  background-color: var(--color-background);
+  background-color: #f8fafc;
   color: var(--color-text-secondary);
   border-bottom: 2px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .table-header-row {
@@ -48,6 +53,7 @@
   font-weight: var(--font-weight-semibold);
   text-align: left;
   user-select: none;
+  white-space: nowrap;
   
   /* First and last cell border radius */
   &:first-child {
@@ -191,13 +197,13 @@
 }
 
 .table-action-button.edit:hover {
-  background-color: #E8F5EC;
-  color: var(--color-primary);
+  background-color: #fef3c7;
+  color: #b45309;
 }
 
 .table-action-button.view:hover {
-  background-color: #f0f9ff;
-  color: var(--color-primary);
+  background-color: #eff6ff;
+  color: #2563eb;
 }
 
 /* ========================================

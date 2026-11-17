@@ -28,6 +28,17 @@
   pointer-events: none;
 }
 
+.page-hero-breadcrumbs {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero-breadcrumbs .ui-breadcrumbs-link,
+.page-hero-breadcrumbs .ui-breadcrumbs-current,
+.page-hero-breadcrumbs .ui-breadcrumbs-separator {
+  color: rgba(255, 255, 255, 0.82);
+}
+
 .page-hero-inner {
   position: relative;
   z-index: 1;

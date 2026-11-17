@@ -53,12 +53,15 @@ const AssetManagementPage: React.FC = () => {
   const [returningLoading, setReturningLoading] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState<any | null>(null);
   const [deleting, setDeleting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const fetchAssets = async () => {
     setLoading(true);
+    setErrorMessage(null);
     try {
+      const status = activeTab === 'Semua' ? undefined : ({ Tersedia: 'available', Digunakan: 'assigned', Perbaikan: 'maintenance', Dihapus: 'retired' } as const)[activeTab];
       const [assetsRes, assignmentsRes] = await Promise.all([
-        assetService.getAssets(),
+        assetService.getAssets({ search: searchQuery.trim() || undefined, status, page: currentPage, per_page: pageSize }),
         assetService.getAssignments().catch(() => ({})),
       ]);
       let assetsArray: any[] = [];
@@ -66,6 +69,8 @@ const AssetManagementPage: React.FC = () => {
       else if (assetsRes?.data && Array.isArray(assetsRes.data)) assetsArray = assetsRes.data;
       else if (Array.isArray(assetsRes)) assetsArray = assetsRes;
       setAssets(assetsArray);
+      const meta = assetsRes?.data?.meta || assetsRes?.meta || assetsRes?.data;
+      setTotalPages(Number(meta?.last_page || meta?.total_pages || 1));
 
       let assignmentsArray: any[] = [];
       if (assignmentsRes?.data?.data && Array.isArray(assignmentsRes.data.data)) assignmentsArray = assignmentsRes.data.data;
@@ -77,6 +82,7 @@ const AssetManagementPage: React.FC = () => {
       showToast(error?.response?.data?.message || error?.message || 'Gagal memuat aset', 'error');
       setAssets([]);
       setAssignments([]);
+      setErrorMessage(error?.response?.data?.message || error?.message || 'Gagal memuat aset');
     } finally {
       setLoading(false);
     }
@@ -95,7 +101,7 @@ const AssetManagementPage: React.FC = () => {
     return map;
   }, [assignments]);
 
-  useEffect(() => { fetchAssets(); }, []);
+  useEffect(() => { void fetchAssets(); }, [currentPage, pageSize, searchQuery, activeTab]);
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -192,32 +198,13 @@ const AssetManagementPage: React.FC = () => {
     }
   };
 
-  const filteredAssets = useMemo(() => {
-    return assets.filter(asset => {
-      const searchStr = searchQuery.toLowerCase();
-      const nameMatch = asset.name?.toLowerCase().includes(searchStr);
-      const codeMatch = asset.code?.toLowerCase().includes(searchStr);
-      const serialMatch = asset.serial_number?.toLowerCase().includes(searchStr);
-      const brandMatch = asset.brand?.toLowerCase().includes(searchStr);
-      const textMatch = nameMatch || codeMatch || serialMatch || brandMatch;
-
-      let statusMatch = true;
-      if (activeTab === 'Tersedia') statusMatch = asset.status?.toLowerCase() === 'available';
-      else if (activeTab === 'Digunakan') statusMatch = asset.status?.toLowerCase() === 'assigned';
-      else if (activeTab === 'Perbaikan') statusMatch = asset.status?.toLowerCase() === 'maintenance';
-      else if (activeTab === 'Dihapus') statusMatch = asset.status?.toLowerCase() === 'retired';
-
-      return textMatch && statusMatch;
-    });
-  }, [assets, searchQuery, activeTab]);
-
   const sortedAssets = useMemo(() => {
-    return [...filteredAssets].sort((a, b) => {
+    return [...assets].sort((a, b) => {
       const dateA = new Date(a.purchase_date || 0).getTime();
       const dateB = new Date(b.purchase_date || 0).getTime();
       return dateB - dateA;
     });
-  }, [filteredAssets]);
+  }, [assets]);
 
   const paginatedAssets = sortedAssets;
 
@@ -363,12 +350,13 @@ const AssetManagementPage: React.FC = () => {
             )}
           </div>
           {loading && <LoadingState message="Memuat aset..." />}
-          {!loading && paginatedAssets.length === 0 && (
+          {!loading && errorMessage && <div className="data-state-error"><p>{errorMessage}</p><button className="btn-outline" onClick={() => void fetchAssets()}>Coba Lagi</button></div>}
+          {!loading && !errorMessage && paginatedAssets.length === 0 && (
             <div style={{ padding: '5rem 0' }}>
               <EmptyState title="Pencarian Kosong" message="Tidak ada aset yang sesuai dengan kriteria Anda." actionLabel="Bersihkan Filter" onAction={clearFilters} />
             </div>
           )}
-          {!loading && paginatedAssets.length > 0 && (
+          {!loading && !errorMessage && paginatedAssets.length > 0 && (
             <>
               <div className="table-wrap">
                 <table className="data-table">
@@ -419,7 +407,7 @@ const AssetManagementPage: React.FC = () => {
                               {canUpdate && <button className="action-btn action-btn-edit" onClick={() => navigate(`/inventory/assets/edit/${asset.id}`)} title="Edit">
                                 <Pencil size={16} />
                               </button>}
-                              {canDelete && <button className="action-btn action-btn-delete" onClick={() => setDeleteTarget(asset)} title="Hapus">
+                              {canDelete && <button className="action-btn action-btn-delete" onClick={() => navigate(`/assets/${asset.id}/delete`)} title="Hapus">
                                 <Trash2 size={16} />
                               </button>}
                             </div>

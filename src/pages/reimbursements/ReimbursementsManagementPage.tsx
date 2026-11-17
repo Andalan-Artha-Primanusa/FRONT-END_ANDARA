@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/shared/ui/Card";
 import { Button } from "@/shared/ui/Button";
 import { ConfirmDialog } from "@/shared/ui/ConfirmDialog";
@@ -60,6 +61,7 @@ const DEFAULT_FORM = {
 };
 
 const ReimbursementsManagementPage = () => {
+  const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
   const canApprove = RBACUtils.hasPermission(user, PERMISSIONS.REIMBURSEMENT_APPROVE);
   const canPay = RBACUtils.hasPermission(user, PERMISSIONS.REIMBURSEMENT_PAY);
@@ -502,7 +504,7 @@ const ReimbursementsManagementPage = () => {
                              {canDelete && (
                              <button
                                   className="action-btn action-btn-delete"
-                                  onClick={() => setDeleteTarget(item)}
+                                  onClick={() => navigate(`/reimbursements/${String(item.id)}/delete`)}
                                   disabled={actionLoading === String(item.id)+'_del'}
                                   title="Hapus Permanen"
                               >

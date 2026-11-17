@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/shared/ui/Card";
 import { ConfirmDialog } from "@/shared/ui/ConfirmDialog";
 import { Modal } from "@/shared/ui/Modal";
@@ -57,6 +58,7 @@ const getEmployeeSubtitle = (employee: any) => {
 };
 
 const PayrollListPage = () => {
+  const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
   const canCreate = RBACUtils.hasPermission(user, PERMISSIONS.PAYROLL_CREATE);
   const canUpdate = RBACUtils.hasPermission(user, PERMISSIONS.PAYROLL_UPDATE);
@@ -501,7 +503,7 @@ const PayrollListPage = () => {
                           <td className="td-center">
                             <div className="action-btn-group" style={{ justifyContent: "center" }}>
                               {canUpdate && <button className="action-btn action-btn-edit" title="Edit" onClick={() => { setForm({ id: String(item.id), employee_id: String(item.employee_id), period: item.period, allowance: String(item.allowance||""), bonus: String(item.bonus||"") }); setMode("edit"); setView("form"); }}><Pencil size={16} /></button>}
-                              {canDelete && <button className="action-btn action-btn-delete" title="Hapus" onClick={() => setDeleteTarget(item)}><Trash2 size={16} /></button>}
+                              {canDelete && <button className="action-btn action-btn-delete" title="Hapus" onClick={() => navigate(`/payroll/list/${item.id}/delete`)}><Trash2 size={16} /></button>}
                             </div>
                           </td>
                         </tr>

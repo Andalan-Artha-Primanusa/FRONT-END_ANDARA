@@ -37,6 +37,7 @@ export type MenuItem = {
   path?: string;
   menuKey?: string;
   subItems?: MenuItem[];
+  mobileFeature?: boolean;
 };
 
 export type ApiMenuNode = {

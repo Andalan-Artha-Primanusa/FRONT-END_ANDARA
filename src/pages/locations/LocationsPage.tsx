@@ -325,7 +325,7 @@ const LocationsPage = () => {
                               <button className="action-btn action-btn-edit" onClick={() => navigate(`/locations/edit/${loc.id}`)} title="Edit">
                                 <Pencil size={16} />
                               </button>
-                              <button className="action-btn action-btn-delete" onClick={() => setDeleteTarget(location)} title="Hapus">
+                              <button className="action-btn action-btn-delete" onClick={() => navigate(`/locations/${String((location as any).id)}/delete`)} title="Hapus">
                                 <Trash2 size={16} />
                               </button>
                             </div>

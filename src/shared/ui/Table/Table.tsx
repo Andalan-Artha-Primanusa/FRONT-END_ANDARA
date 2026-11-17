@@ -193,6 +193,7 @@ export const TableAction: React.FC<TableActionProps> = ({ onClick, icon, title, 
       className={`table-action-button ${variant}`}
       onClick={onClick}
       title={title}
+      aria-label={title}
       disabled={disabled}
       type="button"
     >

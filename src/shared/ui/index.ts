@@ -72,6 +72,7 @@ export {
    PAGE HEADER (UNIFIED DESIGN SYSTEM)
    ======================================== */
 export { PageHeader, type PageHeaderProps, type PageHeaderBadge } from './PageHeader';
+export { CrudListLayout, type CrudListLayoutProps } from './CrudListLayout';
 
 export {
   CardHeader,

@@ -51,24 +51,30 @@ const ProgramsTab: React.FC = () => {
   const [employeeSearch, setEmployeeSearch] = useState('');
   const [deleteTarget, setDeleteTarget] = useState<TrainingProgram | null>(null);
   const [deleting, setDeleting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const fetchData = async () => {
     setLoading(true);
+    setErrorMessage(null);
     try {
-      const data = await trainingService.getPrograms();
+      const status = activeTab === 'Semua' ? undefined : activeTab.toLowerCase();
+      const data = await trainingService.getPrograms({ search: searchQuery.trim() || undefined, status, page: currentPage, per_page: pageSize });
       let arr: any[] = [];
       if (Array.isArray(data)) arr = data;
       else if (Array.isArray(data?.data)) arr = data.data;
       else if (Array.isArray(data?.data?.data)) arr = data.data.data;
       setPrograms(arr);
+      const meta = data?.data?.meta || data?.meta || data?.data;
+      setTotalPages(Number(meta?.last_page || meta?.total_pages || 1));
     } catch (error) {
       console.error('Error fetching programs:', error);
+      setErrorMessage(error instanceof Error ? error.message : 'Gagal memuat program training');
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => { fetchData(); }, []);
+  useEffect(() => { void fetchData(); }, [currentPage, pageSize, searchQuery, activeTab]);
 
   const filtered = useMemo(() => programs.filter(p => {
     const q = searchQuery.toLowerCase();
@@ -195,10 +201,11 @@ const ProgramsTab: React.FC = () => {
       </Card>
 
           {loading && <LoadingState message="Memuat program..." />}
-          {!loading && paginated.length === 0 && (
+          {!loading && errorMessage && <div className="data-state-error"><p>{errorMessage}</p><button className="btn-outline" onClick={() => void fetchData()}>Coba Lagi</button></div>}
+          {!loading && !errorMessage && paginated.length === 0 && (
             <div style={{ padding: '5rem 0' }}><EmptyState title="Pencarian Kosong" message="Tidak ada program yang sesuai." actionLabel="Bersihkan Filter" onAction={clearFilters} /></div>
           )}
-          {!loading && paginated.length > 0 && (
+          {!loading && !errorMessage && paginated.length > 0 && (
             <>
               <div className="table-wrap">
                 <table className="data-table">
@@ -242,7 +249,7 @@ const ProgramsTab: React.FC = () => {
                             </button>
                             )}
                             {canUpdate && <button className="action-btn action-btn-edit" onClick={() => navigate(`/training/programs/edit/${program.id}`)} title="Edit"><Edit size={16} /></button>}
-                            {canDelete && <button className="action-btn action-btn-delete" onClick={() => setDeleteTarget(program)} title="Hapus"><Trash2 size={16} /></button>}
+                            {canDelete && <button className="action-btn action-btn-delete" onClick={() => navigate(`/training/programs/${program.id}/delete`)} title="Hapus"><Trash2 size={16} /></button>}
                           </div>
                         </td>
                       </tr>

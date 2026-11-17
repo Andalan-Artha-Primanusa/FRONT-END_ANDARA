@@ -287,25 +287,38 @@ body .dashboard-content :is(.action-btn-group, .andalan-kpi-row-actions, .andala
 }
 
 body .dashboard-content :is(
-  .action-btn-edit,
-  .action-btn-view,
   .action-btn-secondary,
-  .uni-action-edit,
-  .uni-action-view
+  .uni-action-secondary
 ) {
   background: var(--brand-green-soft) !important;
   border: 1px solid rgba(10, 122, 62, 0.16) !important;
   color: var(--brand-green-dark) !important;
 }
 
+body .dashboard-content :is(.action-btn-edit, .uni-action-edit) {
+  background: #fef3c7 !important;
+  border: 1px solid rgba(180, 83, 9, 0.18) !important;
+  color: #b45309 !important;
+}
+
+body .dashboard-content :is(.action-btn-view, .uni-action-view) {
+  background: #eff6ff !important;
+  border: 1px solid rgba(37, 99, 235, 0.18) !important;
+  color: #2563eb !important;
+}
+
 body .dashboard-content :is(
   .action-btn-edit,
-  .action-btn-view,
-  .uni-action-edit,
-  .uni-action-view
+  .uni-action-edit
 ):hover:not(:disabled) {
-  background: var(--brand-green) !important;
-  border-color: var(--brand-green) !important;
+  background: #d97706 !important;
+  border-color: #d97706 !important;
+  color: #ffffff !important;
+}
+
+body .dashboard-content :is(.action-btn-view, .uni-action-view):hover:not(:disabled) {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
   color: #ffffff !important;
 }
 

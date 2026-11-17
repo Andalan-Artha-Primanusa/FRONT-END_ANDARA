@@ -491,19 +491,38 @@
 }
 
 .action-btn-edit,
-.action-btn-view,
 .action-btn-secondary,
-.action-btn-success,
 .action-btn-approve {
-  background: var(--color-primary-light, #E8F5EC);
-  color: var(--color-primary-dark, #075B2C);
+  background: #fef3c7;
+  color: #b45309;
   border-color: transparent;
 }
 
-.action-btn-edit:hover,
-.action-btn-view:hover,
+.action-btn-view {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: transparent;
+}
+
+.action-btn-success,
+.action-btn-approve {
+  background: var(--color-success-light, #E8F5EC);
+  color: #08703A;
+  border-color: transparent;
+}
+
+.action-btn-edit:hover {
+  background: #d97706;
+  color: #ffffff;
+}
+
 .action-btn-approve:hover {
-  background: var(--color-primary, #0A7A3E);
+  background: #148f5b;
+  color: #ffffff;
+}
+
+.action-btn-view:hover {
+  background: #2563eb;
   color: #ffffff;
 }
 

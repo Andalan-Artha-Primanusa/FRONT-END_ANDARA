@@ -242,8 +242,7 @@ const LeaveRequestsPage = () => {
               onReject={handleReject}
               onEdit={(id) => navigate(`/leave/requests/edit/${id}`)}
               onDelete={(id) => {
-                const item = items.find((entry) => String(entry.id) === String(id)) || null;
-                setDeleteTarget(item);
+                navigate(`/leave/requests/${String(id)}/delete`);
               }}
               onHistory={(id) => setHistoryModal({ module: "leave", id })}
               canApproveLeave={canApproveLeave}

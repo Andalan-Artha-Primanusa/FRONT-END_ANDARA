@@ -24,6 +24,29 @@ const checkIsActive = (item: MenuItem, pathname: string): boolean => {
   return false;
 };
 
+const sectionLabel = (item: MenuItem): string => {
+  if (item.path?.startsWith('/andalan/mobile')) return '';
+  const value = item.label.toLowerCase();
+  if (value.includes('dashboard')) return 'MAIN MENU';
+  if (value.includes('andara mobile')) return 'EMPLOYEE SELF SERVICE';
+  if (value.includes('karyawan') || value.includes('workforce')) return 'HUMAN CAPITAL';
+  if (value.includes('absen')) return 'ATTENDANCE';
+  if (value.includes('kpi') || value.includes('kinerja')) return 'PERFORMANCE MANAGEMENT';
+  if (value.includes('reimburse')) return 'REIMBURSE MANAGEMENT';
+  if (value.includes('master') || value.includes('departemen') || value.includes('lokasi')) return 'MASTER DATA';
+  return 'ADMINISTRATION';
+};
+
+const flattenAndaraGroups = (items: MenuItem[]): MenuItem[] => items.flatMap((item) => {
+  const label = item.label.toLowerCase();
+  const isAndaraGroup = label === 'andara mobile' || label === 'andara kpi' || label === 'andara workforce';
+  if (!isAndaraGroup || !item.subItems?.length) return [{ ...item, mobileFeature: item.path?.startsWith('/andalan/mobile') }];
+  return item.subItems.map((child) => ({
+    ...child,
+    mobileFeature: child.path?.startsWith('/andalan/mobile'),
+  }));
+});
+
 const MenuItemComponent: React.FC<{
   item: MenuItem;
   collapsed: boolean;
@@ -50,7 +73,8 @@ const MenuItemComponent: React.FC<{
             'menu-item',
             'has-submenu',
             isActive && 'active',
-            collapsed && 'collapsed'
+            collapsed && 'collapsed',
+            item.mobileFeature && 'mobile-feature'
           )}
           onClick={() => !collapsed && setIsExpanded(!isExpanded)}
           title={collapsed ? item.label : undefined}
@@ -93,7 +117,8 @@ const MenuItemComponent: React.FC<{
           clsx(
             level > 0 ? 'submenu-item' : 'menu-item',
             (isActive || isLinkActive) && 'active',
-            collapsed && 'collapsed'
+            collapsed && 'collapsed',
+            item.mobileFeature && 'mobile-feature'
           )
         }
         title={collapsed ? item.label : undefined}
@@ -199,9 +224,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, isMobileOpen, onClo
           { label: 'Dokumen', icon: FileText, path: '/andalan/workforce/documents' },
         ],
       },
-      ...filteredItems,
+      ...filteredItems.filter((item) => !item.label.toLowerCase().startsWith('andara ')),
     ]
     : filteredItems;
+
+  const normalizedItems = flattenAndaraGroups(visibleItems);
 
   // When mobile drawer is open, always show full expanded sidebar regardless of collapsed state
   const effectiveCollapsed = isMobileOpen ? false : collapsed;
@@ -262,13 +289,13 @@ const handleCompanyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 
       <div className="sidebar-menu-container">
         <ul className="menu-list">
-          {visibleItems.map((item, idx) => (
-            <MenuItemComponent
-              key={idx}
-              item={item}
-              collapsed={effectiveCollapsed}
-              level={0}
-            />
+          {normalizedItems.map((item, idx) => (
+            <React.Fragment key={item.menuKey ?? `${item.label}-${idx}`}>
+              {!effectiveCollapsed && sectionLabel(item) && (idx === 0 || sectionLabel(item) !== sectionLabel(normalizedItems[idx - 1])) && (
+                <li className="sidebar-section-label" aria-hidden="true">{sectionLabel(item)}</li>
+              )}
+              <MenuItemComponent item={item} collapsed={effectiveCollapsed} level={0} />
+            </React.Fragment>
           ))}
         </ul>
       </div>

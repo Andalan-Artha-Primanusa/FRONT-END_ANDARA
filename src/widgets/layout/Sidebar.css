@@ -152,6 +152,20 @@
   gap: 0.25rem;
 }
 
+.sidebar-section-label {
+  padding: 0.85rem 0.75rem 0.3rem;
+  color: var(--color-text-tertiary);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.sidebar-section-label:not(:first-child) {
+  margin-top: 0.45rem;
+}
+
 .menu-item-wrapper {
   min-width: 0;
 }
@@ -190,6 +204,16 @@
   border-color: rgba(10, 122, 62, 0.22);
   color: var(--color-primary-dark);
   font-weight: 700;
+}
+
+.menu-item.mobile-feature,
+.submenu-item.mobile-feature {
+  border-left: 2px solid #dc2626;
+}
+
+.menu-item.mobile-feature .menu-icon,
+.submenu-item.mobile-feature .menu-icon {
+  color: #dc2626;
 }
 
 .menu-item.active::before,
