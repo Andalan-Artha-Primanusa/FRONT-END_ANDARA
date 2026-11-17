@@ -25,6 +25,7 @@ const checkIsActive = (item: MenuItem, pathname: string): boolean => {
 };
 
 const sectionLabel = (item: MenuItem): string => {
+  if (item.label.toLowerCase().startsWith('andara ')) return '';
   if (item.path?.startsWith('/andalan/mobile')) return '';
   const value = item.label.toLowerCase();
   if (value.includes('dashboard')) return 'MAIN MENU';
@@ -36,16 +37,6 @@ const sectionLabel = (item: MenuItem): string => {
   if (value.includes('master') || value.includes('departemen') || value.includes('lokasi')) return 'MASTER DATA';
   return 'ADMINISTRATION';
 };
-
-const flattenAndaraGroups = (items: MenuItem[]): MenuItem[] => items.flatMap((item) => {
-  const label = item.label.toLowerCase();
-  const isAndaraGroup = label === 'andara mobile' || label === 'andara kpi' || label === 'andara workforce';
-  if (!isAndaraGroup || !item.subItems?.length) return [{ ...item, mobileFeature: item.path?.startsWith('/andalan/mobile') }];
-  return item.subItems.map((child) => ({
-    ...child,
-    mobileFeature: child.path?.startsWith('/andalan/mobile'),
-  }));
-});
 
 const MenuItemComponent: React.FC<{
   item: MenuItem;
@@ -74,7 +65,7 @@ const MenuItemComponent: React.FC<{
             'has-submenu',
             isActive && 'active',
             collapsed && 'collapsed',
-            item.mobileFeature && 'mobile-feature'
+            (item.mobileFeature || item.path?.startsWith('/andalan/mobile')) && 'mobile-feature'
           )}
           onClick={() => !collapsed && setIsExpanded(!isExpanded)}
           title={collapsed ? item.label : undefined}
@@ -118,7 +109,7 @@ const MenuItemComponent: React.FC<{
             level > 0 ? 'submenu-item' : 'menu-item',
             (isActive || isLinkActive) && 'active',
             collapsed && 'collapsed',
-            item.mobileFeature && 'mobile-feature'
+            (item.mobileFeature || item.path?.startsWith('/andalan/mobile')) && 'mobile-feature'
           )
         }
         title={collapsed ? item.label : undefined}
@@ -228,7 +219,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, isMobileOpen, onClo
     ]
     : filteredItems;
 
-  const normalizedItems = flattenAndaraGroups(visibleItems);
+  const normalizedItems = visibleItems;
 
   // When mobile drawer is open, always show full expanded sidebar regardless of collapsed state
   const effectiveCollapsed = isMobileOpen ? false : collapsed;
