@@ -38,6 +38,9 @@ const sectionLabel = (item: MenuItem): string => {
   return 'ADMINISTRATION';
 };
 
+const isMobileMenuItem = (item: MenuItem): boolean =>
+  item.label.toLowerCase().includes('andara mobile') || item.path?.startsWith('/andalan/mobile') === true;
+
 const MenuItemComponent: React.FC<{
   item: MenuItem;
   collapsed: boolean;
@@ -65,7 +68,7 @@ const MenuItemComponent: React.FC<{
             'has-submenu',
             isActive && 'active',
             collapsed && 'collapsed',
-            (item.mobileFeature || item.path?.startsWith('/andalan/mobile')) && 'mobile-feature'
+            (item.mobileFeature || isMobileMenuItem(item)) && 'mobile-feature'
           )}
           onClick={() => !collapsed && setIsExpanded(!isExpanded)}
           title={collapsed ? item.label : undefined}
@@ -109,7 +112,7 @@ const MenuItemComponent: React.FC<{
             level > 0 ? 'submenu-item' : 'menu-item',
             (isActive || isLinkActive) && 'active',
             collapsed && 'collapsed',
-            (item.mobileFeature || item.path?.startsWith('/andalan/mobile')) && 'mobile-feature'
+            (item.mobileFeature || isMobileMenuItem(item)) && 'mobile-feature'
           )
         }
         title={collapsed ? item.label : undefined}

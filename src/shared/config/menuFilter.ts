@@ -7,6 +7,7 @@ import { RBACUtils } from "@/shared/hooks/rbac";
 
 let cachePromise: Promise<string[]> | null = null;
 let treeCachePromise: Promise<MenuItem[]> | null = null;
+let presentationTreeCache: Promise<MenuItem[]> | null = null;
 
 const PRESENTATION_MENU_FALLBACK: ApiMenuNode[] = [
   { key: 'presentation.dashboard', label: 'Dashboard', icon: 'LayoutDashboard', path: '/dashboard' },
@@ -123,19 +124,24 @@ export const fetchAllowedMenuKeys = async (user: AuthUser | null = null): Promis
 export const clearMenuCache = () => {
   cachePromise = null;
   treeCachePromise = null;
+  presentationTreeCache = null;
   useAuthStore.getState().setAllowedMenuKeys([]);
   useAuthStore.getState().setMenuKeysLoaded(false);
 };
 
 export const fetchUserMenuTree = async (user: AuthUser | null = null): Promise<MenuItem[]> => {
   if (!user?.roles?.length) {
-    try {
-      const res = await api.get<{ data?: ApiMenuNode[] }>("/presentation/menus");
-      const nodes = Array.isArray(res.data?.data) && res.data.data.length ? res.data.data : PRESENTATION_MENU_FALLBACK;
-      return mapApiMenuTree(nodes);
-    } catch {
-      return mapApiMenuTree(PRESENTATION_MENU_FALLBACK);
-    }
+    if (presentationTreeCache) return presentationTreeCache;
+    presentationTreeCache = (async () => {
+      try {
+        const res = await api.get<{ data?: ApiMenuNode[] }>("/presentation/menus");
+        const nodes = Array.isArray(res.data?.data) && res.data.data.length ? res.data.data : PRESENTATION_MENU_FALLBACK;
+        return mapApiMenuTree(nodes);
+      } catch {
+        return mapApiMenuTree(PRESENTATION_MENU_FALLBACK);
+      }
+    })();
+    return presentationTreeCache;
   }
   if (treeCachePromise) return treeCachePromise;
 
