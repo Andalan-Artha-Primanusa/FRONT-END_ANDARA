@@ -455,7 +455,7 @@ const MyKpiPage = () => {
                           <td className="td-center"><span className={getStatusClass(period.status)}>{getStatusLabel(period.status)}</span></td>
                           <td className="td-center">
                             <div className="action-btn-group">
-                              <button className="action-btn action-btn-edit" onClick={() => { setSelectedPeriod(period); setShowDetail(true); }} title="Detail"><Eye size={16} /></button>
+                              <button className="action-btn action-btn-view" onClick={() => { setSelectedPeriod(period); setShowDetail(true); }} title="Detail"><Eye size={16} /></button>
                             </div>
                           </td>
                         </tr>
@@ -577,11 +577,11 @@ const MyKpiPage = () => {
                                 <span className={getItemStatusClass(item.status)}>{getItemStatusLabel(item.status)}</span>
                                 {canEdit && itemStatus === "draft" ? (
                                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                                    <button className="action-btn" style={{ color: "#6366f1", background: "#eef2ff" }}
+                                    <button className="action-btn action-btn-view"
                                       onClick={() => void handleSaveItem(item)} disabled={savingItemId === item.id} title="Simpan capaian">
                                       <CheckCircle2 size={16} />
                                     </button>
-                                    <button className="action-btn" style={{ color: "#10b981", background: "#ecfdf5" }}
+                                    <button className="action-btn action-btn-approve"
                                       onClick={() => void handleSubmitItem(item)} disabled={submittingItemId === item.id} title="Ajukan item">
                                       <Send size={16} />
                                     </button>

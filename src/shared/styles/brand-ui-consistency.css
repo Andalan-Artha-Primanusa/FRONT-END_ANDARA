@@ -443,9 +443,15 @@ body .dashboard-content :is(.pagination-btn, .pagination-page-btn, .pagination-b
 }
 
 body .dashboard-content :is(.pagination-btn.active, .pagination-page-btn.active, .pagination-button.active, .page-btn.active) {
-  background: var(--brand-green) !important;
-  border-color: var(--brand-green) !important;
+  background: #2563eb !important;
+  border-color: #2563eb !important;
   color: #ffffff !important;
+}
+
+body .dashboard-content :is(.pagination-btn, .pagination-page-btn, .pagination-button, .page-btn):not(.active) {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #64748b !important;
 }
 
 @media (max-width: 768px) {
