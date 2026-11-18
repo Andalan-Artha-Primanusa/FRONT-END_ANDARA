@@ -1,6 +1,10 @@
 # dependencies
 node_modules/
 
+# production build output
+dist/
+.vite/
+
 # env files
 .env
 .env.local
