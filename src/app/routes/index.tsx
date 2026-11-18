@@ -61,7 +61,7 @@ const TrainingFormPage = lazy(() => import("../../pages/admin/TrainingFormPage")
 const MyTrainingsPage = lazy(() => import("../../pages/ess/MyTrainingsPage"));
 const CompetencyMatrixPage = lazy(() => import("../../pages/admin/CompetencyMatrixPage"));
 const MyCompetenciesPage = lazy(() => import("../../pages/ess/MyCompetenciesPage"));
-const AssetManagementPage = lazy(() => import("../../pages/admin/AssetManagementPage"));
+const AssetEntryPage = lazy(() => import("../../pages/admin/AssetEntryPage"));
 const AssetFormPage = lazy(() => import("../../pages/admin/AssetFormPage"));
 const AssetQrAuditPage = lazy(() => import("../../pages/admin/AssetQrAuditPage"));
 const MyAssetsPage = lazy(() => import("../../pages/ess/MyAssetsPage"));
@@ -264,7 +264,7 @@ export const router = createBrowserRouter([
       layoutRoute("/my/trainings", <MenuRouteGuard menuKey="ess.training"><MyTrainingsPage /></MenuRouteGuard>),
       layoutRoute("/competencies", <MenuRouteGuard menuKey="performance-dev.competency"><CompetencyMatrixPage /></MenuRouteGuard>),
       layoutRoute("/my/competencies", <MenuRouteGuard menuKey="ess.competency"><MyCompetenciesPage /></MenuRouteGuard>),
-      layoutRoute("/assets", <MenuRouteGuard menuKey="assets"><AssetManagementPage /></MenuRouteGuard>),
+      layoutRoute("/assets", <MenuRouteGuard menuKey="assets"><AssetEntryPage /></MenuRouteGuard>),
       layoutRoute("/assets/scan", <MenuRouteGuard menuKey="assets"><AssetQrAuditPage /></MenuRouteGuard>),
       layoutRoute("/assets/create", <MenuRouteGuard menuKey="assets"><AssetFormPage /></MenuRouteGuard>),
       layoutRoute("/assets/edit/:id", <MenuRouteGuard menuKey="assets"><AssetFormPage /></MenuRouteGuard>),
