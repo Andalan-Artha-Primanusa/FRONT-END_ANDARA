@@ -226,11 +226,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, isMobileOpen, onClo
       ...filteredItems.filter((item) => !item.label.toLowerCase().startsWith('andara ')),
       { label: 'Promotion & Career', icon: TrendingUp, path: '/promotions', menuKey: 'career.promotions' } as MenuItem,
       { label: 'Assignment Letter', icon: FileText, path: '/assignment-letters', menuKey: 'assignment-letters' } as MenuItem,
+      { label: 'Manajemen Asset', icon: BriefcaseBusiness, path: '/assets', menuKey: 'assets' } as MenuItem,
     ]
     : [
       ...filteredItems,
       ...(!filteredItems.some((item) => item.path === '/promotions') ? [{ label: 'Promotion & Career', icon: TrendingUp, path: '/promotions', menuKey: 'career.promotions' } as MenuItem] : []),
       ...(!filteredItems.some((item) => item.path === '/assignment-letters') ? [{ label: 'Assignment Letter', icon: FileText, path: '/assignment-letters', menuKey: 'assignment-letters' } as MenuItem] : []),
+      ...(!filteredItems.some((item) => item.path === '/assets') ? [{ label: 'Manajemen Asset', icon: BriefcaseBusiness, path: '/assets', menuKey: 'assets' } as MenuItem] : []),
     ];
 
   const normalizedItems = visibleItems;
