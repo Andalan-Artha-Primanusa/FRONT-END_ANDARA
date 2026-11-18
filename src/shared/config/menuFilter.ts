@@ -30,6 +30,18 @@ const PRESENTATION_MENU_FALLBACK: ApiMenuNode[] = [
       { key: 'presentation.workforce.documents', label: 'Dokumen', icon: 'FileText', path: '/andalan/workforce/documents' },
     ],
   },
+  { key: 'presentation.dashboard.admin', label: 'Dashboard', icon: 'LayoutDashboard', path: '/dashboard' },
+  { key: 'presentation.employees', label: 'Manajemen Karyawan', icon: 'Users', path: '/employees' },
+  { key: 'presentation.attendance.monitoring', label: 'Monitoring Clock In/Out', icon: 'Clock', path: '/attendance/monitoring' },
+  { key: 'presentation.attendance.check-in', label: 'Testing Clock In', icon: 'Clock', path: '/attendance/check-in' },
+  { key: 'presentation.attendance.check-out', label: 'Testing Clock Out', icon: 'Clock', path: '/attendance/check-out' },
+  { key: 'presentation.reimbursements', label: 'Manajemen Reimburse', icon: 'Receipt', path: '/reimbursements' },
+  { key: 'presentation.kpis', label: 'KPI & Kinerja', icon: 'Target', path: '/kpis' },
+  { key: 'presentation.master-data', label: 'Departemen & Posisi', icon: 'Building2', path: '/organization/master-data' },
+  { key: 'presentation.locations', label: 'Lokasi', icon: 'MapPin', path: '/locations' },
+  { key: 'career.promotions', label: 'Promotion & Career', icon: 'TrendingUp', path: '/promotions' },
+  { key: 'assignment-letters', label: 'Assignment Letter', icon: 'FileText', path: '/assignment-letters' },
+  { key: 'assets', label: 'Manajemen Asset', icon: 'Briefcase', path: '/assets' },
 ];
 
 const collectMenuKeys = (items: { key: string; children?: { key: string; children?: any[] }[] }[]): string[] =>
@@ -132,15 +144,7 @@ export const clearMenuCache = () => {
 export const fetchUserMenuTree = async (user: AuthUser | null = null): Promise<MenuItem[]> => {
   if (!user?.roles?.length) {
     if (presentationTreeCache) return presentationTreeCache;
-    presentationTreeCache = (async () => {
-      try {
-        const res = await api.get<{ data?: ApiMenuNode[] }>("/presentation/menus");
-        const nodes = Array.isArray(res.data?.data) && res.data.data.length ? res.data.data : PRESENTATION_MENU_FALLBACK;
-        return mapApiMenuTree(nodes);
-      } catch {
-        return mapApiMenuTree(PRESENTATION_MENU_FALLBACK);
-      }
-    })();
+    presentationTreeCache = Promise.resolve(mapApiMenuTree(PRESENTATION_MENU_FALLBACK));
     return presentationTreeCache;
   }
   if (treeCachePromise) return treeCachePromise;
