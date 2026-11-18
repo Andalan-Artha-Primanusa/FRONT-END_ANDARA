@@ -224,6 +224,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, isMobileOpen, onClo
         ],
       },
       ...filteredItems.filter((item) => !item.label.toLowerCase().startsWith('andara ')),
+      { label: 'Promotion & Career', icon: TrendingUp, path: '/promotions', menuKey: 'career.promotions' } as MenuItem,
+      { label: 'Assignment Letter', icon: FileText, path: '/assignment-letters', menuKey: 'assignment-letters' } as MenuItem,
     ]
     : [
       ...filteredItems,

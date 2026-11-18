@@ -1,1 +1,0 @@
-import{t as e}from"./vendor-react-zpg5-b3f.js";/* empty css                     *//* empty css                      */import{t}from"./AndalanAttendanceCard-BV0_6ijT.js";/* empty css                        */var n=e(),r=()=>(0,n.jsx)(`div`,{className:`crud-page attendance-page`,children:(0,n.jsx)(t,{mode:`check-in`})});export{r as default};
