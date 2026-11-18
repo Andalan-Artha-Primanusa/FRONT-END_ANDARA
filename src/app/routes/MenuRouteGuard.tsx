@@ -29,7 +29,9 @@ export const MenuRouteGuard: React.FC<MenuRouteGuardProps> = ({ menuKey, childre
   // Otorisasi berhasil jika menuKey eksplisit terdaftar,
   // sesuai source of truth dari backend `/user/menus`.
   const presentationMode = Boolean(user && user.roles.length === 0 && user.permissions.length === 0);
-  const isAllowed = presentationMode || RBACUtils.isSuperAdmin(user) || allowedMenuKeys.includes(menuKey);
+  // Dua modul baru tetap ditampilkan sebelum menu database di-migrate.
+  const isTemporaryVisibleMenu = menuKey === "career.promotions" || menuKey === "assignment-letters";
+  const isAllowed = presentationMode || RBACUtils.isSuperAdmin(user) || isTemporaryVisibleMenu || allowedMenuKeys.includes(menuKey);
 
   if (!isAllowed) {
     return (

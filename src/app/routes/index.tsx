@@ -11,6 +11,7 @@ import ForgotPasswordPage from "../../pages/auth/login/ForgotPasswordPage";
 import ResetPasswordPage from "../../pages/auth/login/ResetPasswordPage";
 import RegisterPage from "../../pages/auth/register/RegisterPage";
 import DashboardLayout from "../layouts/DashboardLayout";
+import SectionPage from "../../pages/dashboard/SectionPage";
 
 const NotFoundPage = lazy(() => import("../../pages/error/NotFoundPage"));
 const OverviewPage = lazy(() => import("../../pages/dashboard/overview/OverviewPage"));
@@ -62,6 +63,7 @@ const CompetencyMatrixPage = lazy(() => import("../../pages/admin/CompetencyMatr
 const MyCompetenciesPage = lazy(() => import("../../pages/ess/MyCompetenciesPage"));
 const AssetManagementPage = lazy(() => import("../../pages/admin/AssetManagementPage"));
 const AssetFormPage = lazy(() => import("../../pages/admin/AssetFormPage"));
+const AssetQrAuditPage = lazy(() => import("../../pages/admin/AssetQrAuditPage"));
 const MyAssetsPage = lazy(() => import("../../pages/ess/MyAssetsPage"));
 const MyDocumentsPage = lazy(() => import("../../pages/ess/MyDocumentsPage"));
 const ApprovalFlowPage = lazy(() => import("../../pages/admin/ApprovalFlowPage"));
@@ -87,12 +89,16 @@ const AdminEmailSendPage = lazy(() => import("../../pages/admin/AdminEmailSendPa
 const AdminEmailNotificationsPage = lazy(() => import("../../pages/admin/AdminEmailNotificationsPage"));
 const AdminAuditLogsPage = lazy(() => import("../../pages/admin/AdminAuditLogsPage"));
 const AdminImportPage = lazy(() => import("../../pages/admin/AdminImportPage"));
+const AdminBiometricDevicesPage = lazy(() => import("../../pages/admin/AdminBiometricDevicesPage"));
 const MasterDataPage = lazy(() => import("../../pages/admin/MasterDataPage"));
 const CompanySettingsPage = lazy(() => import("../../pages/admin/CompanySettingsPage"));
 const CompanyManagementPage = lazy(() => import("../../pages/admin/CompanyManagementPage"));
 const CompanyFormPage = lazy(() => import("../../pages/admin/CompanyFormPage"));
 const NotificationSettingsPage = lazy(() => import("../../pages/admin/NotificationSettingsPage"));
 const MyProfilePage = lazy(() => import("../../pages/profiles/MyProfilePage"));
+const BenefitsPage = lazy(() => import("../../pages/benefits/BenefitsPage"));
+const PromotionCareerPage = lazy(() => import("../../pages/admin/PromotionCareerPage"));
+const AssignmentLettersPage = lazy(() => import("../../pages/admin/AssignmentLettersPage"));
 const AndalanMobilePage = lazy(() => import("../../pages/andalan/AndalanMobilePage"));
 const AndalanMobileFormPage = lazy(() => import("../../pages/andalan/AndalanMobileFormPage"));
 const AndalanKpiPage = lazy(() => import("../../pages/andalan/AndalanKpiPage"));
@@ -237,6 +243,10 @@ export const router = createBrowserRouter([
       layoutRoute("/my/payroll", <MenuRouteGuard menuKey="ess.payslip"><MyPayrollPage /></MenuRouteGuard>),
       layoutRoute("/reimbursements", <MenuRouteGuard menuKey="compensation.reimbursement"><AdminReimbursementsPage /></MenuRouteGuard>),
       layoutRoute("/my/reimbursements", <MenuRouteGuard menuKey="ess.reimbursement"><MyReimbursementsPage /></MenuRouteGuard>),
+      layoutRoute("/benefits", <MenuRouteGuard menuKey="benefits"><BenefitsPage /></MenuRouteGuard>),
+      layoutRoute("/my/benefits", <MenuRouteGuard menuKey="ess.benefits"><BenefitsPage /></MenuRouteGuard>),
+      layoutRoute("/promotions", <MenuRouteGuard menuKey="career.promotions"><PromotionCareerPage /></MenuRouteGuard>),
+      layoutRoute("/assignment-letters", <MenuRouteGuard menuKey="assignment-letters"><AssignmentLettersPage /></MenuRouteGuard>),
       {
         path: "/kpis",
         element: <DashboardLayout />,
@@ -255,6 +265,7 @@ export const router = createBrowserRouter([
       layoutRoute("/competencies", <MenuRouteGuard menuKey="performance-dev.competency"><CompetencyMatrixPage /></MenuRouteGuard>),
       layoutRoute("/my/competencies", <MenuRouteGuard menuKey="ess.competency"><MyCompetenciesPage /></MenuRouteGuard>),
       layoutRoute("/assets", <MenuRouteGuard menuKey="assets"><AssetManagementPage /></MenuRouteGuard>),
+      layoutRoute("/assets/scan", <MenuRouteGuard menuKey="assets"><AssetQrAuditPage /></MenuRouteGuard>),
       layoutRoute("/assets/create", <MenuRouteGuard menuKey="assets"><AssetFormPage /></MenuRouteGuard>),
       layoutRoute("/assets/edit/:id", <MenuRouteGuard menuKey="assets"><AssetFormPage /></MenuRouteGuard>),
       layoutRoute("/my/assets", <MenuRouteGuard menuKey="ess.assets"><MyAssetsPage /></MenuRouteGuard>),
@@ -282,6 +293,14 @@ export const router = createBrowserRouter([
       layoutRoute("/notifications", <MenuRouteGuard menuKey="ess.notifications"><NotificationsPage /></MenuRouteGuard>),
       layoutRoute("/reports", <Navigate to="/reports/dashboard-summary" replace />),
       layoutRoute("/reports/dashboard-summary", <ReportsDashboardPage />),
+      layoutRoute("/insights/people/detailed", <MenuRouteGuard menuKey="reporting.people-insight"><SectionPage /></MenuRouteGuard>),
+      layoutRoute("/compliance/overview", <MenuRouteGuard menuKey="compliance.overview"><SectionPage /></MenuRouteGuard>),
+      layoutRoute("/compliance/audit-summary", <MenuRouteGuard menuKey="compliance.audit-summary"><SectionPage /></MenuRouteGuard>),
+      layoutRoute("/compliance/expiring-documents", <MenuRouteGuard menuKey="compliance.expiring-documents"><SectionPage /></MenuRouteGuard>),
+      layoutRoute("/performance/summary", <MenuRouteGuard menuKey="performance.review"><SectionPage /></MenuRouteGuard>),
+      layoutRoute("/performance/cycles", <MenuRouteGuard menuKey="performance.review"><SectionPage /></MenuRouteGuard>),
+      layoutRoute("/performance/reviews", <MenuRouteGuard menuKey="performance.review"><SectionPage /></MenuRouteGuard>),
+      layoutRoute("/engagement/surveys", <MenuRouteGuard menuKey="engagement.survey"><SectionPage /></MenuRouteGuard>),
       layoutRoute("/admin/users", <MenuRouteGuard menuKey="admin.users"><AdminUsersPage /></MenuRouteGuard>),
       layoutRoute("/admin/users/create", <MenuRouteGuard menuKey="admin.users"><AdminUserCreatePage /></MenuRouteGuard>),
       layoutRoute("/admin/users/assign-roles", <MenuRouteGuard menuKey="admin.users"><AdminUserAssignRolesPage /></MenuRouteGuard>),
@@ -296,6 +315,7 @@ export const router = createBrowserRouter([
       layoutRoute("/admin/notifications/email-logs", <MenuRouteGuard menuKey="admin.email-logs"><AdminEmailNotificationsPage /></MenuRouteGuard>),
       layoutRoute("/admin/audit-logs", <MenuRouteGuard menuKey="admin.audit-logs"><AdminAuditLogsPage /></MenuRouteGuard>),
       layoutRoute("/admin/import", <MenuRouteGuard menuKey="admin.import"><AdminImportPage /></MenuRouteGuard>),
+      layoutRoute("/admin/biometric-devices", <MenuRouteGuard menuKey="admin.biometric"><AdminBiometricDevicesPage /></MenuRouteGuard>),
       layoutRoute("/organization/master-data", <Navigate to="/organization/master-data/departments" replace />),
       layoutRoute("/organization/master-data/departments", <MenuRouteGuard menuKey="admin.departments"><MasterDataPage /></MenuRouteGuard>),
       layoutRoute("/organization/master-data/positions", <MenuRouteGuard menuKey="admin.positions"><MasterDataPage /></MenuRouteGuard>),

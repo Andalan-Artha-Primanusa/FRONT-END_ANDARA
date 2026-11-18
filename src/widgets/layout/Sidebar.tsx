@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import { Banknote, Building2, CalendarDays, BriefcaseBusiness, ChevronRight, Clock3, FileText, GraduationCap, Newspaper, Smartphone, Target, WalletCards, X } from 'lucide-react';
+import { Banknote, Building2, CalendarDays, BriefcaseBusiness, ChevronRight, Clock3, FileText, GraduationCap, Newspaper, Smartphone, Target, WalletCards, X, TrendingUp } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './Sidebar.css';
 
@@ -225,7 +225,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, isMobileOpen, onClo
       },
       ...filteredItems.filter((item) => !item.label.toLowerCase().startsWith('andara ')),
     ]
-    : filteredItems;
+    : [
+      ...filteredItems,
+      ...(!filteredItems.some((item) => item.path === '/promotions') ? [{ label: 'Promotion & Career', icon: TrendingUp, path: '/promotions', menuKey: 'career.promotions' } as MenuItem] : []),
+      ...(!filteredItems.some((item) => item.path === '/assignment-letters') ? [{ label: 'Assignment Letter', icon: FileText, path: '/assignment-letters', menuKey: 'assignment-letters' } as MenuItem] : []),
+    ];
 
   const normalizedItems = visibleItems;
 

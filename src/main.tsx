@@ -7,7 +7,6 @@ import "./index.css";
 import "./shared/styles/submenu-table.css";
 import "./shared/styles/ui-accent-fixes.css";
 import "./shared/styles/table-standard.css";
-import "./shared/styles/andara-button-theme.css";
 import "./shared/styles/brand-ui-consistency.css";
 
 const storedTheme = localStorage.getItem('theme');

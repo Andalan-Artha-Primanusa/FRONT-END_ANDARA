@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, RefreshCw, Package, Search, Filter, Laptop, Monitor, Smartphone, Briefcase, User, Trash2, Pencil, CheckCircle2, ArrowDownToLine, ArrowUpFromLine } from 'lucide-react';
+import { Plus, RefreshCw, Package, Search, Filter, Laptop, Monitor, Smartphone, Briefcase, User, Trash2, Pencil, CheckCircle2, ArrowDownToLine, ArrowUpFromLine, QrCode } from 'lucide-react';
 import { Card } from '@/shared/ui/Card';
 import { Modal } from '@/shared/ui/Modal';
 import { ConfirmDialog } from '@/shared/ui/ConfirmDialog';
@@ -13,6 +13,7 @@ import '@/pages/dashboard/overview/OverviewPage.css';
 import '@/pages/employee/EmployeesPage.css';
 import './AssetInventoryPage.css';
 import { showToast } from '@/shared/ui/toast';
+import QRCode from 'qrcode';
 import CompanyScopeBadge from "@/shared/components/CompanyScopeBadge";
 import { useAuthStore } from "@/app/store/auth.store";
 import { RBACUtils } from "@/shared/hooks/rbac";
@@ -263,6 +264,15 @@ const AssetManagementPage: React.FC = () => {
     return currentAssignment.employee?.user?.name || currentAssignment.employee?.full_name || '-';
   };
 
+  const openAssetQr = async (asset: any) => {
+    const payload = JSON.stringify({ type: 'hris-asset-audit', asset_code: asset.code });
+    const dataUrl = await QRCode.toDataURL(payload, { width: 420, margin: 2 });
+    const popup = window.open('', '_blank', 'noopener,noreferrer');
+    if (!popup) return;
+    popup.document.write(`<title>QR Aset ${asset.code}</title><body style="font-family:Arial;text-align:center;padding:32px"><h2>${asset.name}</h2><p>${asset.code}</p><img src="${dataUrl}" alt="QR ${asset.code}" /><p>Scan untuk audit aset</p></body>`);
+    popup.document.close();
+  };
+
   return (
     <div className="crud-page asset-page">
       <PageHeader
@@ -272,6 +282,7 @@ const AssetManagementPage: React.FC = () => {
         scope
         actions={
           <>
+            <button className="btn-outline" onClick={() => navigate('/assets/scan')}><QrCode size={16} /> Audit QR</button>
             {canCreate && (
             <button className="btn-primary" onClick={() => navigate('/inventory/assets/create')}>
               <Plus size={16} />
@@ -394,6 +405,7 @@ const AssetManagementPage: React.FC = () => {
                           <td className="td-center">{getStatusBadge(asset.status)}</td>
                           <td className="td-center">
                             <div className="action-btn-group">
+                              <button className="action-btn action-btn-view" onClick={() => void openAssetQr(asset)} title="Generate QR Audit"><QrCode size={16} /></button>
                               {canAssign && asset.status?.toLowerCase() === 'available' && (
                                 <button className="action-btn" style={{ background: 'var(--color-primary-light)', color: 'var(--color-primary)' }} onClick={() => openAssignModal(asset)} title="Assign ke Karyawan">
                                   <ArrowDownToLine size={16} />

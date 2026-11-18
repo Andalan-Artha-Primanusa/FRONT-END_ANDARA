@@ -19,6 +19,14 @@ export const assetService = {
     const response = await api.get(`/assets/${id}`);
     return response.data;
   },
+  scanByCode: async (code: string) => {
+    const response = await api.get(`/assets/scan/${encodeURIComponent(code)}`);
+    return response.data;
+  },
+  getAuditHistory: async (id: string | number) => {
+    const response = await api.get(`/assets/${id}/audit-history`);
+    return response.data;
+  },
   createAsset: async (data: any) => {
     const response = await api.post('/assets', data);
     return response.data;
