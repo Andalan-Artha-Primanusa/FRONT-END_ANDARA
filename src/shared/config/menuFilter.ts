@@ -12,25 +12,24 @@ let presentationTreeCache: Promise<MenuItem[]> | null = null;
 const PRESENTATION_MENU_FALLBACK: ApiMenuNode[] = [
   { key: 'presentation.dashboard', label: 'Dashboard', icon: 'LayoutDashboard', path: '/dashboard' },
   {
-    key: 'presentation.mobile', label: 'ANDARA Mobile', icon: 'Smartphone', path: '/andalan/mobile', children: [
-      { key: 'presentation.mobile.news', label: 'Berita', icon: 'Newspaper', path: '/andalan/mobile/news' },
-      { key: 'presentation.mobile.roster', label: 'Roster', icon: 'CalendarDays', path: '/andalan/mobile/roster' },
-      { key: 'presentation.mobile.leave', label: 'Cuti & Izin', icon: 'FileText', path: '/andalan/mobile/leave' },
-      { key: 'presentation.mobile.reimburse', label: 'Reimburse', icon: 'Wallet', path: '/andalan/mobile/reimburse' },
-      { key: 'presentation.mobile.trips', label: 'Perjalanan Dinas', icon: 'CalendarDays', path: '/andalan/mobile/trips' },
+    key: 'presentation.mobile', label: 'Menu Mobile', icon: 'Smartphone', path: '/andalan/mobile', children: [
+      { key: 'presentation.mobile.news', label: 'Berita (Mobile)', icon: 'Newspaper', path: '/andalan/mobile/news' },
+      { key: 'presentation.mobile.roster', label: 'Roster (Mobile)', icon: 'CalendarDays', path: '/andalan/mobile/roster' },
+      { key: 'presentation.mobile.leave', label: 'Cuti & Izin (Mobile)', icon: 'FileText', path: '/andalan/mobile/leave' },
+      { key: 'presentation.mobile.reimburse', label: 'Reimburse (Mobile)', icon: 'Wallet', path: '/andalan/mobile/reimburse' },
+      { key: 'presentation.mobile.trips', label: 'Perjalanan Dinas (Mobile)', icon: 'CalendarDays', path: '/andalan/mobile/trips' },
     ],
   },
-  { key: 'presentation.kpi', label: 'ANDARA KPI', icon: 'Target', path: '/andalan/kpi' },
+  { key: 'presentation.kpi', label: 'KPI & Kinerja (Mobile)', icon: 'Target', path: '/andalan/kpi' },
   {
-    key: 'presentation.workforce', label: 'ANDARA Workforce', icon: 'Briefcase', path: '/andalan/workforce/payroll', children: [
-      { key: 'presentation.workforce.payroll', label: 'Payroll', icon: 'Banknote', path: '/andalan/workforce/payroll' },
-      { key: 'presentation.workforce.training', label: 'Training', icon: 'GraduationCap', path: '/andalan/workforce/training' },
-      { key: 'presentation.workforce.assets', label: 'Asset', icon: 'Briefcase', path: '/andalan/workforce/assets' },
-      { key: 'presentation.workforce.overtime', label: 'Overtime', icon: 'Clock', path: '/andalan/workforce/overtime' },
-      { key: 'presentation.workforce.documents', label: 'Dokumen', icon: 'FileText', path: '/andalan/workforce/documents' },
+    key: 'presentation.workforce', label: 'Menu Workforce', icon: 'Briefcase', path: '/andalan/workforce/payroll', children: [
+      { key: 'presentation.workforce.payroll', label: 'Payroll (Mobile)', icon: 'Banknote', path: '/andalan/workforce/payroll' },
+      { key: 'presentation.workforce.training', label: 'Training (Mobile)', icon: 'GraduationCap', path: '/andalan/workforce/training' },
+      { key: 'presentation.workforce.assets', label: 'Asset (Mobile)', icon: 'Briefcase', path: '/andalan/workforce/assets' },
+      { key: 'presentation.workforce.overtime', label: 'Overtime (Mobile)', icon: 'Clock', path: '/andalan/workforce/overtime' },
+      { key: 'presentation.workforce.documents', label: 'Dokumen (Mobile)', icon: 'FileText', path: '/andalan/workforce/documents' },
     ],
   },
-  { key: 'presentation.dashboard.admin', label: 'Dashboard', icon: 'LayoutDashboard', path: '/dashboard' },
   { key: 'presentation.employees', label: 'Manajemen Karyawan', icon: 'Users', path: '/employees' },
   { key: 'presentation.attendance.monitoring', label: 'Monitoring Clock In/Out', icon: 'Clock', path: '/attendance/monitoring' },
   { key: 'presentation.attendance.check-in', label: 'Testing Clock In', icon: 'Clock', path: '/attendance/check-in' },
@@ -39,9 +38,6 @@ const PRESENTATION_MENU_FALLBACK: ApiMenuNode[] = [
   { key: 'presentation.kpis', label: 'KPI & Kinerja', icon: 'Target', path: '/kpis' },
   { key: 'presentation.master-data', label: 'Departemen & Posisi', icon: 'Building2', path: '/organization/master-data' },
   { key: 'presentation.locations', label: 'Lokasi', icon: 'MapPin', path: '/locations' },
-  { key: 'career.promotions', label: 'Promotion & Career', icon: 'TrendingUp', path: '/promotions' },
-  { key: 'assignment-letters', label: 'Assignment Letter', icon: 'FileText', path: '/assignment-letters' },
-  { key: 'assets', label: 'Manajemen Asset', icon: 'Briefcase', path: '/assets' },
 ];
 
 const collectMenuKeys = (items: { key: string; children?: { key: string; children?: any[] }[] }[]): string[] =>

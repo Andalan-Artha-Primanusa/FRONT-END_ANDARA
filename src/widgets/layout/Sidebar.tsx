@@ -196,39 +196,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, isMobileOpen, onClo
 
   const filteredItems = allowedKeys === undefined ? [] : menuTree;
   const presentationMode = Boolean(user && user.roles.length === 0 && user.permissions.length === 0);
-  const visibleItems: MenuItem[] = presentationMode
-    ? [
-      {
-        label: 'ANDARA Mobile',
-        icon: Smartphone,
-        path: '/andalan/mobile',
-        subItems: [
-          { label: 'Berita', icon: Newspaper, path: '/andalan/mobile/news' },
-          { label: 'Roster', icon: CalendarDays, path: '/andalan/mobile/roster' },
-          { label: 'Cuti & Izin', icon: FileText, path: '/andalan/mobile/leave' },
-          { label: 'Reimburse', icon: WalletCards, path: '/andalan/mobile/reimburse' },
-          { label: 'Perjalanan Dinas', icon: CalendarDays, path: '/andalan/mobile/trips' },
-        ],
-      },
-      { label: 'ANDARA KPI', icon: Target, path: '/andalan/kpi' },
-      {
-        label: 'ANDARA Workforce',
-        icon: BriefcaseBusiness,
-        path: '/andalan/workforce/payroll',
-        subItems: [
-          { label: 'Payroll', icon: Banknote, path: '/andalan/workforce/payroll' },
-          { label: 'Training', icon: GraduationCap, path: '/andalan/workforce/training' },
-          { label: 'Asset', icon: BriefcaseBusiness, path: '/andalan/workforce/assets' },
-          { label: 'Overtime', icon: Clock3, path: '/andalan/workforce/overtime' },
-          { label: 'Dokumen', icon: FileText, path: '/andalan/workforce/documents' },
-        ],
-      },
-      ...filteredItems.filter((item) => !item.label.toLowerCase().startsWith('andara ')),
-      { label: 'Promotion & Career', icon: TrendingUp, path: '/promotions', menuKey: 'career.promotions' } as MenuItem,
-      { label: 'Assignment Letter', icon: FileText, path: '/assignment-letters', menuKey: 'assignment-letters' } as MenuItem,
-      { label: 'Manajemen Asset', icon: BriefcaseBusiness, path: '/assets', menuKey: 'assets' } as MenuItem,
-    ]
-    : [
+  const visibleItems: MenuItem[] = presentationMode ? [
+    ...filteredItems,
+    { label: 'Promotion & Career', icon: TrendingUp, path: '/promotions', menuKey: 'career.promotions' } as MenuItem,
+    { label: 'Assignment Letter', icon: FileText, path: '/assignment-letters', menuKey: 'assignment-letters' } as MenuItem,
+    { label: 'Manajemen Asset', icon: BriefcaseBusiness, path: '/assets', menuKey: 'assets' } as MenuItem,
+  ] : [
       ...filteredItems,
       ...(!filteredItems.some((item) => item.path === '/promotions') ? [{ label: 'Promotion & Career', icon: TrendingUp, path: '/promotions', menuKey: 'career.promotions' } as MenuItem] : []),
       ...(!filteredItems.some((item) => item.path === '/assignment-letters') ? [{ label: 'Assignment Letter', icon: FileText, path: '/assignment-letters', menuKey: 'assignment-letters' } as MenuItem] : []),
