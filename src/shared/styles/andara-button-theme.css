@@ -6,7 +6,7 @@
 }
 
 /* Header/menu controls are navigation chrome, not page actions. */
-button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn),
+button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn):not(.action-btn):not(.andalan-kpi-icon-button):not(.uni-action-btn),
 a.btn-primary,
 a.btn-secondary,
 a.btn-outline,
@@ -19,7 +19,7 @@ a.btn-warning {
   color: #ffffff !important;
 }
 
-button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn):hover:not(:disabled),
+button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn):not(.action-btn):not(.andalan-kpi-icon-button):not(.uni-action-btn):hover:not(:disabled),
 a.btn-primary:hover,
 a.btn-secondary:hover,
 a.btn-outline:hover,
@@ -32,7 +32,7 @@ a.btn-warning:hover {
   color: #ffffff !important;
 }
 
-button:not(.icon-button):not(.dropdown-item):disabled,
+button:not(.icon-button):not(.dropdown-item):not(.action-btn):not(.andalan-kpi-icon-button):not(.uni-action-btn):disabled,
 a.btn-primary[aria-disabled='true'],
 a.btn-secondary[aria-disabled='true'],
 a.btn-outline[aria-disabled='true'],
@@ -46,8 +46,8 @@ a.btn-warning[aria-disabled='true'] {
   opacity: 1 !important;
 }
 
-button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn) svg,
-button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn) *,
+button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn):not(.action-btn):not(.andalan-kpi-icon-button):not(.uni-action-btn) svg,
+button:not(.icon-button):not(.dropdown-item):not(.sidebar-toggle-btn):not(.action-btn):not(.andalan-kpi-icon-button):not(.uni-action-btn) *,
 a.btn-primary svg,
 a.btn-secondary svg,
 a.btn-outline svg,
