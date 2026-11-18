@@ -513,17 +513,17 @@ const OvertimePage = () => {
                         <div className="action-btn-group">
                           {canViewAllOvertime && normalizeOvertimeStatus(record.request_status || record.status) === 'pending' && record.can_act !== false && (
                             <>
-                              <button className="action-btn" style={{ color: '#10b981', background: '#ecfdf5' }} onClick={() => void handleApproveRequest(record)} title="Setujui"><CheckCircle size={16} /></button>
+                              <button className="action-btn action-btn-approve" onClick={() => void handleApproveRequest(record)} title="Setujui"><CheckCircle size={16} /></button>
                               <button className="action-btn" style={{ color: '#ef4444', background: '#fef2f2' }} onClick={() => void handleRejectRequest(record)} title="Tolak"><XCircle size={16} /></button>
                             </>
                           )}
                           {record.request_id && (normalizeOvertimeStatus(record.request_status) === 'pending' || !record.reason) && (
-                            <button className="action-btn" style={{ color: '#6366f1', background: '#eef2ff' }} onClick={() => void handleAddReason(record)} title="Alasan"><MessageSquare size={16} /></button>
+                              <button className="action-btn action-btn-view" onClick={() => void handleAddReason(record)} title="Alasan"><MessageSquare size={16} /></button>
                           )}
                           {(record.request_id || record.attendance_id) && normalizeOvertimeStatus(record.request_status) !== 'approved' && (
-                            <button className="action-btn" style={{ color: '#06b6d4', background: '#ecfeff' }} onClick={() => void handleUploadEvidence(record)} title="Upload"><Send size={16} /></button>
+                              <button className="action-btn action-btn-view" onClick={() => void handleUploadEvidence(record)} title="Upload"><Send size={16} /></button>
                           )}
-                          <button className="action-btn" style={{ color: '#0f172a', background: '#f1f5f9' }} onClick={() => void handleViewMyEvidences(record)} title="Bukti" disabled={!record.request_id}><Eye size={16} /></button>
+                          <button className="action-btn action-btn-view" onClick={() => void handleViewMyEvidences(record)} title="Bukti" disabled={!record.request_id}><Eye size={16} /></button>
                         </div>
                       </td>
                     </tr>

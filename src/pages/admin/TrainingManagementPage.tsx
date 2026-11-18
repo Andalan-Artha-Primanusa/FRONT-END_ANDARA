@@ -244,7 +244,7 @@ const ProgramsTab: React.FC = () => {
                         <td className="td-center">
                           <div className="action-btn-group">
                             {canEnroll && (
-                            <button className="action-btn" style={{ color: '#6366f1', background: '#eef2ff' }} onClick={() => openEnrollModal(typeof program.id === 'string' ? parseInt(program.id, 10) : program.id, program.title || program.nama || '')} title="Daftarkan Karyawan">
+                            <button className="action-btn action-btn-view" onClick={() => openEnrollModal(typeof program.id === 'string' ? parseInt(program.id, 10) : program.id, program.title || program.nama || '')} title="Daftarkan Karyawan">
                               <UserPlus size={16} />
                             </button>
                             )}
@@ -597,16 +597,16 @@ const EnrollmentsTab: React.FC = () => {
                           <div className="action-btn-group">
                             {canEnroll && enrollment.status === 'pending' && enrollment.can_act !== false && (
                               <>
-                                <button className="action-btn" style={{ color: '#10b981', background: '#ecfdf5' }} onClick={() => handleApprove(enrollment.id)} title="Approve"><CheckCircle size={16} /></button>
+                                <button className="action-btn action-btn-approve" onClick={() => handleApprove(enrollment.id)} title="Approve"><CheckCircle size={16} /></button>
                                 <button className="action-btn" style={{ color: '#ef4444', background: '#fef2f2' }} onClick={() => handleReject(enrollment.id)} title="Reject"><XCircle size={16} /></button>
                               </>
                             )}
                             {canEnroll && (enrollment.status === 'enrolled' || enrollment.status === 'in_progress') && (
-                              <button className="action-btn" style={{ color: '#8b5cf6', background: '#f5f3ff' }} onClick={() => openCompleteModal(enrollment)} title="Update Progress"><Award size={16} /></button>
+                              <button className="action-btn action-btn-edit" onClick={() => openCompleteModal(enrollment)} title="Update Progress"><Award size={16} /></button>
                             )}
-                            <button className="action-btn" style={{ color: 'var(--color-primary)', background: '#eff6ff' }} onClick={() => openProgressHistory(enrollment.id)} title="Riwayat Progress"><TrendingUp size={16} /></button>
+                            <button className="action-btn action-btn-view" onClick={() => openProgressHistory(enrollment.id)} title="Riwayat Progress"><TrendingUp size={16} /></button>
                             {enrollment.approval_flow_id && (
-                              <button className="action-btn" style={{ color: '#8b5cf6', background: '#f5f3ff' }} onClick={() => setHistoryModal({ module: 'training', id: enrollment.id })} title="Riwayat Approval"><History size={16} /></button>
+                              <button className="action-btn action-btn-view" onClick={() => setHistoryModal({ module: 'training', id: enrollment.id })} title="Riwayat Approval"><History size={16} /></button>
                             )}
                           </div>
                         </td>

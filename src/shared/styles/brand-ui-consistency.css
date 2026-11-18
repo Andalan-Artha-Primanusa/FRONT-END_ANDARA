@@ -322,6 +322,25 @@ body .dashboard-content :is(.action-btn-view, .uni-action-view):hover:not(:disab
   color: #ffffff !important;
 }
 
+/* Normalize legacy inline-styled table actions by their intent. */
+body .dashboard-content .action-btn:is([title="Lihat"], [title="Bukti"], [title="Upload"], [title="Alasan"], [title*="Riwayat"]) {
+  background: #eff6ff !important;
+  border: 1px solid rgba(37, 99, 235, 0.18) !important;
+  color: #2563eb !important;
+}
+
+body .dashboard-content .action-btn:is([title="Hapus"], [title="Tolak"], [title="Reject"]) {
+  background: #fde8e8 !important;
+  border: 1px solid rgba(184, 50, 46, 0.16) !important;
+  color: #b8322e !important;
+}
+
+body .dashboard-content .action-btn:is([title="Setujui"], [title="Approve"]) {
+  background: var(--brand-green-soft) !important;
+  border: 1px solid rgba(10, 122, 62, 0.16) !important;
+  color: var(--brand-green-dark) !important;
+}
+
 body .dashboard-content :is(
   .action-btn-delete,
   .action-btn-reject,

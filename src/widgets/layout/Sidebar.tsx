@@ -25,8 +25,8 @@ const checkIsActive = (item: MenuItem, pathname: string): boolean => {
 };
 
 const sectionLabel = (item: MenuItem): string => {
+  if (item.path?.startsWith('/andalan/mobile')) return 'ANDARA MOBILE';
   if (item.label.toLowerCase().startsWith('andara ')) return '';
-  if (item.path?.startsWith('/andalan/mobile')) return '';
   const value = item.label.toLowerCase();
   if (value.includes('dashboard')) return 'MAIN MENU';
   if (value.includes('andara mobile')) return 'EMPLOYEE SELF SERVICE';
@@ -40,6 +40,9 @@ const sectionLabel = (item: MenuItem): string => {
 
 const isMobileMenuItem = (item: MenuItem): boolean =>
   item.label.toLowerCase().includes('andara mobile') || item.path?.startsWith('/andalan/mobile') === true;
+
+const mobileMenuBadge = (item: MenuItem): string =>
+  isMobileMenuItem(item) ? 'MOBILE' : '';
 
 const MenuItemComponent: React.FC<{
   item: MenuItem;
@@ -78,6 +81,7 @@ const MenuItemComponent: React.FC<{
           {!collapsed && (
             <>
               <span className="menu-label">{item.label}</span>
+              {!collapsed && mobileMenuBadge(item) && <span className="menu-mobile-badge">MOBILE</span>}
               <span className={clsx('menu-chevron', isExpanded && 'expanded')}>
                 <ChevronRight size={16} />
               </span>
@@ -124,6 +128,7 @@ const MenuItemComponent: React.FC<{
           !collapsed && level > 0 && <span className="submenu-dot" />
         )}
         {!collapsed && <span className="menu-label">{item.label}</span>}
+        {!collapsed && mobileMenuBadge(item) && <span className="menu-mobile-badge">MOBILE</span>}
       </NavLink>
     </li>
   );
