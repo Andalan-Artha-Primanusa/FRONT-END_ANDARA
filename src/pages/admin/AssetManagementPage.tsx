@@ -284,7 +284,7 @@ const AssetManagementPage: React.FC = () => {
           <>
             <button className="btn-outline" onClick={() => navigate('/assets/scan')}><QrCode size={16} /> Audit QR</button>
             {canCreate && (
-            <button className="btn-primary" onClick={() => navigate('/inventory/assets/create')}>
+            <button className="btn-primary" onClick={() => navigate('/assets/create')}>
               <Plus size={16} />
               Buat Aset Baru
             </button>
